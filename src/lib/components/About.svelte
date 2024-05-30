@@ -3,7 +3,7 @@
   import type { About } from "$lib/types/sanity.types"
   export let about: About
 
-  import TimeLine from "$lib/components/subs/TimeLine.svelte"
+  import TimeLine from "$lib/components/subs/TLine.svelte"
 </script>
 
 <div id="about" class="column-section">

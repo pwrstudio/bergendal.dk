@@ -3,7 +3,7 @@
   import type { MainPageTop } from "$lib/types/sanity.types"
   export let mainPageTop: MainPageTop
 
-  import TimeLine from "$lib/components/subs/TimeLine.svelte"
+  import TimeLine from "$lib/components/subs/TLine.svelte"
 </script>
 
 <div class="column-section">
