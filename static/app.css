@@ -51,6 +51,7 @@
 
 * {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {
@@ -148,4 +149,8 @@ iframe {
 
 .work-summary a:hover {
   color: var(--foreground);
+}
+
+figure {
+  margin: 0;
 }
