@@ -107,6 +107,10 @@
     bottom: 0;
     left: 20px;
     width: calc(66.6666% - 80px);
+
+    @include screen-size("small") {
+      display: none;
+    }
   }
 
   .work-documentation-popover-close {
@@ -116,6 +120,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
+    z-index: 1000;
 
     &:after {
       content: "";

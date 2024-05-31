@@ -5,10 +5,17 @@
     ContributionsToResearch,
   } from "$lib/types/sanity.types"
   export let page: TextAndArchive | ContributionsToResearch
+
+  console.log(page)
+
+  const id =
+    page._type === "textAndArchive"
+      ? "text-and-archive"
+      : "contributions-to-research"
 </script>
 
 <!-- LISTING -->
-<div id="text-and-archive" class="column-section">
+<div {id} class="column-section">
   <div class="listing-title">{page.title}</div>
 
   <!-- CONTENT -->
