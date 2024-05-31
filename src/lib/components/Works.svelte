@@ -5,7 +5,7 @@
   import WorkComponent from "$lib/components/subs/Work.svelte"
 </script>
 
-<div id="work" class="column-section">
+<div id="work">
   {#each works as work}
     <WorkComponent {work} />
   {/each}

@@ -26,6 +26,7 @@
     font-size: var(--font-size-small);
     margin-bottom: 30px;
     margin-top: 30px;
+    user-select: none;
   }
 
   .timeline-start {

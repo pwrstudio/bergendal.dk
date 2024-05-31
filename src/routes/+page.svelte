@@ -29,8 +29,7 @@
   import MainPageTopComponent from "$lib/components/MainPageTop.svelte"
   import WorksComponent from "$lib/components/Works.svelte"
   import AboutComponent from "$lib/components/About.svelte"
-  import TextAndArchiveComponent from "$lib/components/TextAndArchive.svelte"
-  import ContributionsToResearchComponent from "$lib/components/ContributionsToResearch.svelte"
+  import ListingComponent from "$lib/components/Listing.svelte"
   import CvAndContactComponent from "$lib/components/CvAndContact.svelte"
 </script>
 
@@ -38,8 +37,8 @@
   <MainPageTopComponent {mainPageTop} />
   <WorksComponent {works} />
   <AboutComponent {about} />
-  <TextAndArchiveComponent {textAndArchive} />
-  <ContributionsToResearchComponent {contributionsToResearch} />
+  <ListingComponent page={textAndArchive} />
+  <ListingComponent page={contributionsToResearch} />
   <CvAndContactComponent {cvAndContact} />
 </div>
 

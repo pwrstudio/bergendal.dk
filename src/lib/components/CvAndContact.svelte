@@ -5,7 +5,7 @@
 </script>
 
 <!-- CV & CONTACT-->
-<div id="cv-and-contact" class="column-section">
+<div id="cv-and-contact" class="column-section cv-contact">
   <div class="cv-contact-title">CV / KERSTIN BERGENDAL</div>
 
   <!-- CV -->
@@ -20,41 +20,58 @@
     {/each}
 
     <!-- PDF -->
-    <div class="cv-contact-content-row">
-      FULL CV >>>
-      <!-- <a href='cv-and-contact/{{contact.header.pdf}}' target=_blank class='cv-contact-content-row-title'>FULL CV >></div> -->
-    </div>
+    {#if cvAndContact?.fullCVUrl}
+      <div class="cv-contact-content-row link">
+        <a href={cvAndContact.fullCVUrl} target="_blank">FULL CV >>></a>
+      </div>
+    {/if}
   </div>
 </div>
 
 <style lang="scss">
   @import "../styles/responsive.scss";
 
+  .cv-contact {
+    font-family: var(--font-family-extended);
+    font-size: var(--font-size-medium);
+  }
+
   .cv-contact-content-row {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 1em;
     @include screen-size("small") {
       flex-wrap: wrap;
     }
-  }
 
-  .cv-contact-content-row-title {
-    width: 200px;
-    @include screen-size("small") {
-      width: 100%;
+    .cv-contact-content-row-title {
+      width: 160px;
+      text-transform: uppercase;
+      @include screen-size("small") {
+        width: 100%;
+      }
     }
-  }
 
-  .cv-contact-content-row-content {
-    width: calc(100% - 200px);
-    @include screen-size("small") {
-      width: 100%;
+    .cv-contact-content-row-content {
+      width: calc(100% - 160px);
+      @include screen-size("small") {
+        width: 100%;
+      }
     }
   }
 
   .cv-contact-title {
-    font-family: var(--font-family-extended);
-    font-size: var(--font-size-medium);
     margin-bottom: 20px;
+  }
+
+  :global(.cv-contact-content-row a) {
+    color: var(--green);
+    text-decoration: none;
+    &:hover {
+      color: var(--foreground);
+    }
+  }
+
+  :global(.cv-contact-content-row-content p) {
+    margin: 0;
   }
 </style>

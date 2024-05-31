@@ -126,7 +126,7 @@ iframe {
 
 .column-section {
   padding-top: 40px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 900px) {
@@ -134,4 +134,18 @@ iframe {
     margin-bottom: 40px;
     padding-top: 20px;
   }
+}
+
+.work-summary {
+  line-height: 1.2em;
+}
+
+.work-summary a {
+  color: var(--green);
+  font-style: italic;
+  text-decoration: none;
+}
+
+.work-summary a:hover {
+  color: var(--foreground);
 }

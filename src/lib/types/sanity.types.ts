@@ -175,7 +175,8 @@ export type CvAndContact = {
             [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
         }
         _type: 'file'
-    }
+    },
+    fullCVUrl?: string
 }
 
 export type SanityFileAsset = {

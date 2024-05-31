@@ -91,11 +91,15 @@
 <style lang="scss">
   @import "../styles/responsive.scss";
 
+  $navigation-vertical-spacing: 30px;
+  $navigation-horizontal-spacing: 30px;
+
   .navigation--link {
     color: var(--green);
     cursor: pointer;
     text-decoration: underline;
     font-family: var(--font-family-normal);
+    user-select: none;
 
     &:hover {
       text-decoration: none;
@@ -112,27 +116,27 @@
     color: var(--green);
 
     &.about {
-      top: var(--navigation-vertical-spacing);
-      left: var(--navigation-horizontal-spacing);
+      top: $navigation-vertical-spacing + 40px;
+      left: $navigation-horizontal-spacing + 20px;
       transform-origin: bottom left;
       transform: rotateZ(-90deg);
     }
 
     &.cv-contact {
-      bottom: var(--navigation-vertical-spacing);
-      left: var(--navigation-horizontal-spacing);
+      bottom: $navigation-vertical-spacing;
+      left: $navigation-horizontal-spacing;
       transform-origin: top left;
       transform: rotateZ(-90deg);
     }
 
     &.work {
-      top: var(--navigation-vertical-spacing);
-      right: var(--navigation-horizontal-spacing);
+      top: $navigation-vertical-spacing + 10px;
+      right: $navigation-horizontal-spacing;
     }
 
     &.text-archive-research {
-      bottom: var(--navigation-vertical-spacing);
-      right: var(--navigation-horizontal-spacing);
+      bottom: $navigation-vertical-spacing;
+      right: $navigation-horizontal-spacing + 20px;
       transform-origin: bottom right;
       transform: rotateZ(90deg);
     }
