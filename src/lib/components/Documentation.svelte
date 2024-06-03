@@ -14,18 +14,19 @@
 
 <!-- DOCUMENTATION POP OVER -->
 <div class="work-documentation-popover" class:text class:slides>
-  <!-- SLIDESHOW -->
-  <div class="work-documentation-popover-slideshow">
-    <Slideshow {post} />
+  <!-- TEXT -->
+  <div class="work-documentation-popover-text">
+    {@html renderBlockText(post.content?.content ?? [])}
   </div>
 
+  <!-- TIMELINE -->
   <div class="timeline">
     <TLine startYear={post.startYear} endYear={post.endYear} />
   </div>
 
-  <!-- TEXT -->
-  <div class="work-documentation-popover-text">
-    {@html renderBlockText(post.content?.content ?? [])}
+  <!-- SLIDESHOW -->
+  <div class="work-documentation-popover-slideshow">
+    <Slideshow {post} />
   </div>
 
   <!-- CLOSE -->
@@ -58,6 +59,7 @@
       position: static;
       width: 100%;
       height: auto;
+      padding-bottom: 20px;
     }
   }
 
@@ -109,7 +111,13 @@
     width: calc(66.6666% - 80px);
 
     @include screen-size("small") {
-      display: none;
+      position: static;
+      bottom: unset;
+      ldeft: unset;
+      margin-left: 20px;
+      width: calc(100% - 40px);
+
+      // display: none;
     }
   }
 

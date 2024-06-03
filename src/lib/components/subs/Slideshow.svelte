@@ -63,7 +63,7 @@
     height: 80vh;
 
     @include screen-size("small") {
-      height: 60vh;
+      height: 300px;
     }
 
     .swiper-wrapper {
@@ -72,17 +72,38 @@
         width: 100%;
         position: relative;
         display: flex;
+        flex-direction: column; // Align items from top to bottom
+        align-items: flex-start; // Align items to the left
+        justify-content: flex-start; // Align items to the top
         user-select: none;
         cursor: grab;
 
+        @include screen-size("small") {
+          align-items: center;
+          justify-content: center;
+        }
+
         img {
           max-height: 80%;
-          max-width: 60vw;
+          max-width: 80%;
+          object-fit: contain;
 
           @include screen-size("small") {
-            object-fit: cover;
             max-height: 100%;
             max-width: 100vw;
+            object-fit: contain;
+          }
+        }
+
+        .video {
+          width: 100%;
+          max-width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 9;
+
+          iframe {
+            width: 100%;
+            height: 100%;
           }
         }
       }
@@ -94,5 +115,12 @@
     font-size: var(--font-size-small);
     margin-left: 20px;
     margin-top: 20px;
+
+    @include screen-size("small") {
+      margin-left: 0;
+      margin-right: 0;
+      text-align: center;
+      padding-bottom: 60px;
+    }
   }
 </style>
