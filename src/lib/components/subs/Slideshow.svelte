@@ -12,10 +12,12 @@
   let swiper: Swiper
   let activeIndex = 0
 
+  console.log("post", post)
+
   $: isMultiSlide = has(swiper, "slides") && swiper.slides.length > 1
   $: isBeginning = activeIndex === 0
   $: isEnd = has(swiper, "slides") && activeIndex === swiper.slides.length - 1
-  $: caption = post.slideshow[activeIndex].caption ?? ""
+  $: caption = post.slideshow ? post.slideshow[activeIndex].caption ?? "" : ""
   $: numberOfSlides = post?.slideshow?.length ?? 0
 
   const nextSlide = () => {
@@ -53,7 +55,11 @@
   </div>
 </div>
 
-<div class="caption">{`(${activeIndex + 1}/${numberOfSlides}) ${caption}`}</div>
+{#if post.slideshow}
+  <div class="caption">
+    {`(${activeIndex + 1}/${numberOfSlides}) ${caption}`}
+  </div>
+{/if}
 
 <style lang="scss">
   @import "../../styles/responsive.scss";

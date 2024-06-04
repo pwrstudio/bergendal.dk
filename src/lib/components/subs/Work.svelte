@@ -36,9 +36,9 @@
     <div class="work-documentation">
       {#each work.documentation as documentation, index}
         <a href={documentation.slug?.current} class="work-documentation-item">
-          <span class="work-documentation-item-number"
-            >#{formatNumber(index + 1)}</span
-          >
+          <span class="work-documentation-item-number">
+            #{formatNumber(index + 1)}
+          </span>
           <span class="work-documentation-item-title">
             {documentation.title}
           </span>
@@ -81,6 +81,7 @@
     font-family: var(--font-family-extended);
     font-size: var(--font-size-medium);
     cursor: pointer;
+    display: block;
 
     &:hover {
       color: var(--green);
