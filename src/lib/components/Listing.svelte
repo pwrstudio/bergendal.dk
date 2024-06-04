@@ -6,8 +6,6 @@
   } from "$lib/types/sanity.types"
   export let page: TextAndArchive | ContributionsToResearch
 
-  console.log(page)
-
   const id =
     page._type === "textAndArchive"
       ? "text-and-archive"
