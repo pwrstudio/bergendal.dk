@@ -4,7 +4,6 @@
   export let post: Documentation
 
   import Slideshow from "$lib/components/subs/Slideshow.svelte"
-  import TLine from "./subs/TLine.svelte"
 
   // Determine layout
   const text = post.content?.content ?? false
@@ -17,11 +16,6 @@
   <!-- TEXT -->
   <div class="work-documentation-popover-text">
     {@html renderBlockText(post.content?.content ?? [])}
-  </div>
-
-  <!-- TIMELINE -->
-  <div class="timeline">
-    <TLine startYear={post.startYear} endYear={post.endYear} />
   </div>
 
   <!-- SLIDESHOW -->
@@ -101,23 +95,6 @@
       position: static;
       width: 100%;
       height: auto;
-    }
-  }
-
-  .timeline {
-    position: fixed;
-    bottom: 0;
-    left: 20px;
-    width: calc(66.6666% - 80px);
-
-    @include screen-size("small") {
-      position: static;
-      bottom: unset;
-      ldeft: unset;
-      margin-left: 20px;
-      width: calc(100% - 40px);
-
-      // display: none;
     }
   }
 

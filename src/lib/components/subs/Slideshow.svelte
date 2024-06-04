@@ -7,12 +7,11 @@
   import has from "lodash/has.js"
   export let post: Documentation
 
-  import VideoPlayer from "./VideoPlayer.svelte"
+  import VideoPlayer from "$lib/components/subs/VideoPlayer.svelte"
+  import TLine from "$lib/components/subs/TLine.svelte"
 
   let swiper: Swiper
   let activeIndex = 0
-
-  console.log("post", post)
 
   $: isMultiSlide = has(swiper, "slides") && swiper.slides.length > 1
   $: isBeginning = activeIndex === 0
@@ -60,6 +59,11 @@
     {`(${activeIndex + 1}/${numberOfSlides}) ${caption}`}
   </div>
 {/if}
+
+<!-- TIMELINE -->
+<div class="timeline">
+  <TLine startYear={post.startYear} endYear={post.endYear} />
+</div>
 
 <style lang="scss">
   @import "../../styles/responsive.scss";
@@ -128,5 +132,10 @@
       text-align: center;
       padding-bottom: 60px;
     }
+  }
+
+  .timeline {
+    margin-right: 20px;
+    margin-left: 20px;
   }
 </style>

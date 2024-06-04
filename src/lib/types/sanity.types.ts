@@ -48,6 +48,7 @@ export type Geopoint = {
 
 export type Video = {
     url?: string
+    year?: number
     posterImage?: {
         asset?: {
             _ref: string
@@ -73,6 +74,7 @@ export type Image = {
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     caption?: string
+    year?: number
     _type: 'image'
     _key: string
 }

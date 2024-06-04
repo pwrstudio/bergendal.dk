@@ -31,7 +31,10 @@
   import AboutComponent from "$lib/components/About.svelte"
   import ListingComponent from "$lib/components/Listing.svelte"
   import CvAndContactComponent from "$lib/components/CvAndContact.svelte"
+  import Metadata from "$lib/components/subs/Metadata.svelte"
 </script>
+
+<Metadata />
 
 <div class="main-column">
   <MainPageTopComponent {mainPageTop} />
