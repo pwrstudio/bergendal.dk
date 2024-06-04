@@ -45,7 +45,7 @@
           {#if slide._type == "image"}
             <img src={urlFor(slide).url()} alt={slide.caption} />
           {:else if slide._type == "video"}
-            <VideoPlayer url={slide.url} />
+            <VideoPlayer {slide} />
           {/if}
         </div>
       {/each}

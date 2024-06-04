@@ -46,6 +46,37 @@ export type Geopoint = {
     alt?: number
 }
 
+export type Video = {
+    url?: string
+    posterImage?: {
+        asset?: {
+            _ref: string
+            _type: 'reference'
+            _weak?: boolean
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+        }
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        _type: 'image'
+    }
+    _type: 'video'
+    _key: string
+}
+
+export type Image = {
+    asset?: {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    caption?: string
+    _type: 'image'
+    _key: string
+}
+
 export type Documentation = {
     _id: string
     _type: 'documentation'
@@ -56,37 +87,7 @@ export type Documentation = {
     startYear?: number
     endYear?: number
     content?: ContentEditor
-    slideshow?: Array<
-        | {
-            asset?: {
-                _ref: string
-                _type: 'reference'
-                _weak?: boolean
-                [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-            }
-            hotspot?: SanityImageHotspot
-            crop?: SanityImageCrop
-            caption?: string
-            _type: 'image'
-            _key: string
-        }
-        | {
-            url?: string
-            posterImage?: {
-                asset?: {
-                    _ref: string
-                    _type: 'reference'
-                    _weak?: boolean
-                    [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-                }
-                hotspot?: SanityImageHotspot
-                crop?: SanityImageCrop
-                _type: 'image'
-            }
-            _type: 'video'
-            _key: string
-        }
-    >
+    slideshow?: Array<Image | Video>
     slug?: Slug
 }
 
