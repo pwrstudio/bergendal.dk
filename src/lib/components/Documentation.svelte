@@ -9,17 +9,19 @@
   const text = post.content?.content ?? false
   const slides =
     post.slideshow && Array.isArray(post.slideshow) && post.slideshow.length > 0
+  // Slides only
+  const visual = slides && !text
 </script>
 
 <!-- DOCUMENTATION POP OVER -->
-<div class="work-documentation-popover" class:text class:slides>
+<div class="work-documentation-popover">
   <!-- TEXT -->
-  <div class="work-documentation-popover-text">
+  <div class="work-documentation-popover-text" class:visual>
     {@html renderBlockText(post.content?.content ?? [])}
   </div>
 
   <!-- SLIDESHOW -->
-  <div class="work-documentation-popover-slideshow">
+  <div class="work-documentation-popover-slideshow" class:visual>
     <Slideshow {post} />
   </div>
 
@@ -54,6 +56,10 @@
       width: 100%;
       height: auto;
       padding-bottom: 20px;
+    }
+
+    &.visual {
+      display: none;
     }
   }
 
@@ -95,6 +101,10 @@
       position: static;
       width: 100%;
       height: auto;
+    }
+
+    &.visual {
+      width: 100%;
     }
   }
 

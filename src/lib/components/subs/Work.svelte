@@ -73,6 +73,7 @@
 
   .work-documentation {
     padding-left: 50px;
+    margin-top: 20px;
   }
 
   .work-documentation-item {

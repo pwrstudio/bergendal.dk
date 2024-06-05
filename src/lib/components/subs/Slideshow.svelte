@@ -1,6 +1,8 @@
 <script lang="ts">
   import Swiper from "swiper"
+  import { Scrollbar } from "swiper/modules"
   import "swiper/css"
+  import "swiper/css/scrollbar"
   import { urlFor } from "$lib/modules/sanity"
   import type { Documentation } from "$lib/types/sanity.types"
   import { onMount } from "svelte"
@@ -17,6 +19,9 @@
   $: isBeginning = activeIndex === 0
   $: isEnd = has(swiper, "slides") && activeIndex === swiper.slides.length - 1
   $: caption = post.slideshow ? post.slideshow[activeIndex].caption ?? "" : ""
+  $: year = post.slideshow
+    ? post.slideshow[activeIndex].year ?? undefined
+    : undefined
   $: numberOfSlides = post?.slideshow?.length ?? 0
 
   const nextSlide = () => {
@@ -28,7 +33,13 @@
   }
 
   onMount(() => {
-    swiper = new Swiper(".swiper")
+    swiper = new Swiper(".swiper", {
+      modules: [Scrollbar],
+      scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true,
+      },
+    })
     swiper.on("slideChange", () => {
       activeIndex = swiper.activeIndex
     })
@@ -51,18 +62,25 @@
         </div>
       {/each}
     </div>
-  </div>
-</div>
 
-{#if post.slideshow}
-  <div class="caption">
-    {`(${activeIndex + 1}/${numberOfSlides}) ${caption}`}
-  </div>
-{/if}
+    <!-- CAPTION -->
+    {#if post.slideshow}
+      <div class="caption">
+        {`[${activeIndex + 1}/${numberOfSlides}] ${caption}`}
+        {#if year}
+          ({year})
+        {/if}
+      </div>
+    {/if}
 
-<!-- TIMELINE -->
-<div class="timeline">
-  <TLine startYear={post.startYear} endYear={post.endYear} />
+    <!-- SCROLLBAR -->
+    <div class="swiper-scrollbar"></div>
+
+    <!-- TIMELINE -->
+    <div class="timeline">
+      <TLine startYear={post.startYear} endYear={post.endYear} />
+    </div>
+  </div>
 </div>
 
 <style lang="scss">
@@ -70,10 +88,11 @@
 
   .swiper {
     margin-top: 0;
-    height: 80vh;
+    height: 100vh;
+    position: relative;
 
     @include screen-size("small") {
-      height: 300px;
+      height: 60vh;
     }
 
     .swiper-wrapper {
@@ -89,8 +108,8 @@
         cursor: grab;
 
         @include screen-size("small") {
-          align-items: center;
-          justify-content: center;
+          // align-items: center;
+          // justify-content: center;
         }
 
         img {
@@ -118,24 +137,46 @@
         }
       }
     }
-  }
 
-  .caption {
-    font-family: var(--font-family-normal);
-    font-size: var(--font-size-small);
-    margin-left: 20px;
-    margin-top: 20px;
+    .swiper-scrollbar {
+      position: absolute;
+      bottom: 57px;
+      left: 55px;
+      width: calc(100% - 130px);
+      height: 10px;
+      z-index: 10;
+      background: transparent;
+    }
 
-    @include screen-size("small") {
-      margin-left: 0;
-      margin-right: 0;
-      text-align: center;
-      padding-bottom: 60px;
+    .caption {
+      position: absolute;
+      bottom: 120px;
+      left: 20px;
+      font-family: var(--font-family-normal);
+      font-size: var(--font-size-small);
+
+      @include screen-size("small") {
+        bottom: 20px;
+
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+        padding-bottom: 60px;
+      }
+    }
+
+    .timeline {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 5;
+      width: calc(100% - 40px);
     }
   }
 
-  .timeline {
-    margin-right: 20px;
-    margin-left: 20px;
+  :global(.swiper-scrollbar-drag) {
+    background: var(--green) !important;
+    border-radius: 10px;
+    cursor: grab !important;
   }
 </style>

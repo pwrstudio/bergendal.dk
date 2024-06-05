@@ -35,13 +35,13 @@
     }
   }
 
-  .about-content a {
+  :global(.about-content a) {
     color: var(--green);
     font-style: italic;
     text-decoration: none;
+  }
 
-    a:hover {
-      color: var(--foreground);
-    }
+  :global(.about-content a:hover) {
+    color: var(--foreground);
   }
 </style>

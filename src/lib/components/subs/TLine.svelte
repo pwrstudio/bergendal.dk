@@ -27,6 +27,7 @@
     margin-bottom: 30px;
     margin-top: 30px;
     user-select: none;
+    position: relative;
   }
 
   .timeline-start {
@@ -48,6 +49,7 @@
     height: 50%;
     margin-top: 6px;
     background-image: url("/images/dot.svg");
+    position: relative;
   }
 
   .timeline-arrow {
