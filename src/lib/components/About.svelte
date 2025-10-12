@@ -28,7 +28,7 @@
 
   .about-content {
     font-family: var(--font-family-extended);
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-medium);
 
     @media (max-width: 900px) {
       font-size: var(--font-size-medium);

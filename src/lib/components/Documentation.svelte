@@ -26,12 +26,12 @@
   </div>
 
   <!-- CLOSE -->
-  <!-- svelte-ignore a11y-missing-content -->
   <a
     href="/#work"
     class="work-documentation-popover-close"
+    aria-label="Close"
     data-sveltekit-noscroll
-  />
+  ></a>
 </div>
 
 <style lang="scss">

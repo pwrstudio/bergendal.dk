@@ -15,22 +15,22 @@
   let swiper: Swiper
   let activeIndex = 0
 
-  $: isMultiSlide = has(swiper, "slides") && swiper.slides.length > 1
-  $: isBeginning = activeIndex === 0
-  $: isEnd = has(swiper, "slides") && activeIndex === swiper.slides.length - 1
-  $: caption = post.slideshow ? post.slideshow[activeIndex].caption ?? "" : ""
+  // $: isMultiSlide = has(swiper, "slides") && swiper.slides.length > 1
+  // $: isBeginning = activeIndex === 0
+  // $: isEnd = has(swiper, "slides") && activeIndex === swiper.slides.length - 1
+  $: caption = post.slideshow ? (post.slideshow[activeIndex].caption ?? "") : ""
   $: year = post.slideshow
-    ? post.slideshow[activeIndex].year ?? undefined
+    ? (post.slideshow[activeIndex].year ?? undefined)
     : undefined
   $: numberOfSlides = post?.slideshow?.length ?? 0
 
-  const nextSlide = () => {
-    swiper.slideNext()
-  }
+  // const nextSlide = () => {
+  //   swiper.slideNext()
+  // }
 
-  const prevSlide = () => {
-    swiper.slidePrev()
-  }
+  // const prevSlide = () => {
+  //   swiper.slidePrev()
+  // }
 
   onMount(() => {
     swiper = new Swiper(".swiper", {
