@@ -50,7 +50,7 @@
 
 <style lang="scss">
   .work-item {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 
     @media (max-width: 900px) {
       margin-bottom: 40px;

@@ -141,13 +141,13 @@ iframe {
   line-height: 1.2em;
 }
 
-.work-summary a {
+.work-summary a, .listing-text a {
   color: var(--green);
   font-style: italic;
   text-decoration: none;
 }
 
-.work-summary a:hover {
+.work-summary a:hover, .listing-text a:hover {
   color: var(--foreground);
 }
 
