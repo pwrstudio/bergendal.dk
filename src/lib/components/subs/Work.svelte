@@ -60,6 +60,7 @@
   .work-meta {
     font-family: var(--font-family-normal);
     font-size: var(--font-size-small);
+    margin-bottom: 0.5em;
   }
 
   .work-summary {

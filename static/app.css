@@ -151,6 +151,10 @@ iframe {
   color: var(--foreground);
 }
 
+.work-summary p:first-child {
+  margin-top: 0;
+}
+
 figure {
   margin: 0;
 }
