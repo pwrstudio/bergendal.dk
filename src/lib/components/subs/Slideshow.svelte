@@ -81,6 +81,7 @@
       z-index: 10;
       background: transparent;
     }
+
     .timeline {
       position: absolute;
       bottom: 20px;

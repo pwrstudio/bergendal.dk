@@ -1,16 +1,9 @@
 <script lang="ts">
   import type { Video } from "$lib/types/sanity.types"
-  import { urlFor } from "$lib/modules/sanity"
   import getVideoId from "get-video-id"
 
   export let slide: Video
-
-  let hasPosterImage = !!slide.posterImage
-  let imageURL = hasPosterImage
-    ? urlFor(slide.posterImage).height(800).auto("format").url()
-    : ""
-  let active = hasPosterImage ? false : true
-  let postfix = hasPosterImage ? "?autoplay=1" : ""
+  let postfix = ""
 
   function generateEmbedCode(url: string): string {
     const { id, service } = getVideoId(url)
@@ -32,49 +25,19 @@
   let videoEmbedCode = slide.url ? generateEmbedCode(slide.url) : ""
 </script>
 
-<div class="video" class:active>
-  {#if active}
-    {@html videoEmbedCode}
-  {:else}
-    <button class="play-button" on:click={() => (active = true)}>▶</button>
-    <img src={imageURL} alt="video thumbnail" />
-  {/if}
+<div class="video">
+  {@html videoEmbedCode}
 </div>
 
 <style lang="scss">
   .video {
-    background: var(--green);
-    width: 720px;
-    max-width: 90%;
+    width: calc(100% - 20px);
+    max-height: 95%;
     aspect-ratio: 16/9;
     line-height: 0;
     position: relative;
-
-    .play-button {
-      background: transparent;
-      border: 0;
-      position: absolute;
-      top: 50%;
-      left: 52%;
-      transform: translate(-50%, -50%);
-      z-index: 100;
-      font-size: 128px;
-      color: var(--green);
-      cursor: pointer;
-
-      &:hover {
-        color: var(--background);
-      }
-    }
-
-    &.active {
-      cursor: default;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 </style>

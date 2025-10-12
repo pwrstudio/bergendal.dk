@@ -43,7 +43,7 @@
 
     img {
       max-height: 90%;
-      max-width: 95%;
+      max-width: calc(100% - 20px);
       object-fit: contain;
 
       @include screen-size("small") {

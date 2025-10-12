@@ -41,7 +41,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: calc(33.3333%);
+    width: calc(100% / 3);
     font-family: var(--font-family-normal);
     font-size: var(--font-size-small);
     height: 100%;
@@ -94,7 +94,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 66.6666%;
+    width: calc(100% * 2 / 3);
     height: 100%;
 
     @include screen-size("small") {
