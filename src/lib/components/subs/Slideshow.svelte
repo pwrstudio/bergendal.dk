@@ -61,14 +61,14 @@
     position: relative;
 
     @include screen-size("small") {
-      height: 60vh;
+      height: 70vh;
     }
 
     .swiper-wrapper {
       height: calc(100vh - 100px);
 
       @include screen-size("small") {
-        height: calc(60vh - 100px);
+        height: calc(70vh - 100px);
       }
     }
 

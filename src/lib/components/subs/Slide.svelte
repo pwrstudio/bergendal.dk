@@ -37,10 +37,6 @@
     cursor: grab;
     padding-top: 36px;
 
-    @include screen-size("small") {
-      padding-top: 0;
-    }
-
     img {
       max-height: 90%;
       max-width: calc(100% - 20px);

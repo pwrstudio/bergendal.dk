@@ -1,8 +1,12 @@
 <script lang="ts">
-  import type { Video } from "$lib/types/sanity.types"
   import getVideoId from "get-video-id"
 
-  export let slide: Video
+  export let slide: {
+    url?: string
+    year?: number
+    _type: "video"
+    _key: string
+  }
   let postfix = ""
 
   function generateEmbedCode(url: string): string {
