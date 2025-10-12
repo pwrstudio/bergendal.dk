@@ -38,12 +38,12 @@
     padding-top: 36px;
 
     img {
-      max-height: 90%;
+      max-height: 95%;
       max-width: calc(100% - 20px);
       object-fit: contain;
 
       @include screen-size("small") {
-        max-height: 90%;
+        max-height: 95%;
         max-width: 95vw;
         object-fit: contain;
       }
