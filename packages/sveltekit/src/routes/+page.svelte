@@ -1,7 +1,6 @@
 <script lang="ts">
   import type {
     About,
-    CvAndContact,
     ContributionsToResearch,
     TextAndArchive,
     MainPageTop,
