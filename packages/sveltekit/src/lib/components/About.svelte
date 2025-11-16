@@ -7,6 +7,11 @@
 </script>
 
 <div id="about" class="column-section">
+  <!-- CONTENT -->
+  <div class="about-content">
+    {@html renderBlockText(about.content?.content ?? [])}
+  </div>
+
   <!-- IMAGE -->
   <img
     src={urlFor(about.featuredImage).url()}
@@ -16,11 +21,6 @@
 
   <!-- TIMELINE -->
   <TimeLine startYear={about.startYear} endYear={about.endYear} />
-
-  <!-- CONTENT -->
-  <div class="about-content">
-    {@html renderBlockText(about.content?.content ?? [])}
-  </div>
 </div>
 
 <style lang="scss">

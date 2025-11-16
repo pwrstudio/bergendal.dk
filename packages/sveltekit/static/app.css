@@ -172,3 +172,7 @@ figure {
 .text-size-large {
   font-size: var(--font-size-large);
 }
+
+.about-content p:first-child {
+  margin-top: 0;
+}
