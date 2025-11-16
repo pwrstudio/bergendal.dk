@@ -75,6 +75,7 @@ pnpm format:check
 ```
 
 The project uses Prettier with the following settings:
+
 - No semicolons
 - Double quotes
 - 2 space indentation

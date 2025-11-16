@@ -50,6 +50,8 @@
     width: min(55vw, calc((100vh - 200px) * 16 / 9));
     aspect-ratio: 16/9;
 
+    background: rgba(211, 211, 211, 0.4);
+
     @include screen-size("small") {
       width: min(85vw, calc((70vh - 200px) * 16 / 9));
     }
