@@ -53,6 +53,9 @@ export const renderBlockText = (blocks: any) => {
             },
             block: {
                 normal: ({ children }) => `<p>${children}</p>`,
+                textSizeSmall: ({ children }) => `<p class="text-size-small">${children}</p>`,
+                textSizeMedium: ({ children }) => `<p class="text-size-medium">${children}</p>`,
+                textSizeLarge: ({ children }) => `<p class="text-size-large">${children}</p>`,
                 blockquote: ({ children }) => `<blockquote>${children}</blockquote>`,
                 h2: ({ children }) => `<h2>${children}</h2>`,
                 h3: ({ children }) => `<h3>${children}</h3>`

@@ -19,9 +19,14 @@ export function truncate(
 
   if (separator) {
     // Find the last occurrence of the separator before the truncation point
-    const separatorRegex = typeof separator === 'string'
-      ? new RegExp(separator.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')
-      : separator
+    let separatorRegex: RegExp
+    if (typeof separator === 'string') {
+      separatorRegex = new RegExp(separator.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')
+    } else {
+      // Ensure the regex has the global flag for matchAll
+      const flags = separator.flags.includes('g') ? separator.flags : separator.flags + 'g'
+      separatorRegex = new RegExp(separator.source, flags)
+    }
 
     const matches = [...truncatedStr.matchAll(separatorRegex)]
     if (matches.length > 0) {

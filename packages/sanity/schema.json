@@ -496,6 +496,18 @@
                           {
                             "type": "string",
                             "value": "normal"
+                          },
+                          {
+                            "type": "string",
+                            "value": "textSizeSmall"
+                          },
+                          {
+                            "type": "string",
+                            "value": "textSizeMedium"
+                          },
+                          {
+                            "type": "string",
+                            "value": "textSizeLarge"
                           }
                         ]
                       },

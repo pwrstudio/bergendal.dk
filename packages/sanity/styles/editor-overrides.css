@@ -1,0 +1,53 @@
+/* Custom text size styles for Sanity Portable Text Editor */
+
+/* Target the text blocks in the editor */
+.pt-text-node[data-text] {
+  /* This will be overridden by more specific selectors below */
+}
+
+/* Small text */
+[data-testid="pt-editor"] > div > div[data-slate-node="element"] > div[style*="textSizeSmall"],
+div[data-slate-node="element"][data-style="textSizeSmall"] > *,
+div[contenteditable="true"] > div > div:has(> span):has([data-style="textSizeSmall"]) {
+  font-size: 12px !important;
+}
+
+/* Medium text */
+[data-testid="pt-editor"] > div > div[data-slate-node="element"] > div[style*="textSizeMedium"],
+div[data-slate-node="element"][data-style="textSizeMedium"] > *,
+div[contenteditable="true"] > div > div:has(> span):has([data-style="textSizeMedium"]) {
+  font-size: 18px !important;
+}
+
+/* Large text */
+[data-testid="pt-editor"] > div > div[data-slate-node="element"] > div[style*="textSizeLarge"],
+div[data-slate-node="element"][data-style="textSizeLarge"] > *,
+div[contenteditable="true"] > div > div:has(> span):has([data-style="textSizeLarge"]) {
+  font-size: 24px !important;
+}
+
+/* More aggressive selectors that should catch most cases */
+div[data-ui="PortableTextEditor"] [data-slate-node="element"]:has([data-text]) {
+  /* Container for text nodes */
+}
+
+/* Target by checking the parent's data attributes */
+div[data-testid="pt-editor"] [data-slate-node="element"] {
+  /* Will apply to all block elements in the editor */
+}
+
+/* Try targeting via attribute selectors on the wrapper divs */
+[data-testid="pt-editor"] [data-block="true"][data-style="textSizeSmall"],
+[data-testid="pt-editor"] div:has(> [data-text])[data-style="textSizeSmall"] {
+  font-size: 12px !important;
+}
+
+[data-testid="pt-editor"] [data-block="true"][data-style="textSizeMedium"],
+[data-testid="pt-editor"] div:has(> [data-text])[data-style="textSizeMedium"] {
+  font-size: 18px !important;
+}
+
+[data-testid="pt-editor"] [data-block="true"][data-style="textSizeLarge"],
+[data-testid="pt-editor"] div:has(> [data-text])[data-style="textSizeLarge"] {
+  font-size: 24px !important;
+}

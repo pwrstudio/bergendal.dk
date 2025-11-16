@@ -97,7 +97,7 @@ export type ContentEditor = {
           _type: 'span'
           _key: string
         }>
-        style?: 'normal'
+        style?: 'normal' | 'textSizeSmall' | 'textSizeMedium' | 'textSizeLarge'
         listItem?: never
         markDefs?: Array<{
           href?: string

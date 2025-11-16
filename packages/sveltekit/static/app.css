@@ -158,3 +158,16 @@ iframe {
 figure {
   margin: 0;
 }
+
+/* Text size classes for content editor */
+.text-size-small {
+  font-size: var(--font-size-small);
+}
+
+.text-size-medium {
+  font-size: var(--font-size-medium);
+}
+
+.text-size-large {
+  font-size: var(--font-size-large);
+}

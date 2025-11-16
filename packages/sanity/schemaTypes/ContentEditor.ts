@@ -1,4 +1,5 @@
 import { MdImage } from 'react-icons/md';
+import { NormalStyle, SmallTextStyle, MediumTextStyle, LargeTextStyle } from '../components/BlockStyleComponents';
 
 export default {
     title: 'Content editor',
@@ -15,7 +16,26 @@ export default {
                 {
                     type: 'block',
                     styles: [
-                        { title: 'Normal', value: 'normal' },
+                        {
+                            title: 'Normal',
+                            value: 'normal',
+                            component: NormalStyle
+                        },
+                        {
+                            title: 'Small text',
+                            value: 'textSizeSmall',
+                            component: SmallTextStyle
+                        },
+                        {
+                            title: 'Medium text',
+                            value: 'textSizeMedium',
+                            component: MediumTextStyle
+                        },
+                        {
+                            title: 'Large text',
+                            value: 'textSizeLarge',
+                            component: LargeTextStyle
+                        },
                         // { title: 'Quote', value: 'blockquote' },
                         // { title: 'H1', value: 'h1' },
                         // { title: 'H2', value: 'h2' },

@@ -3,6 +3,8 @@ import { structureTool } from 'sanity/structure'
 import { schemaTypes } from './schemaTypes'
 import { media } from 'sanity-plugin-media'
 import deskStructure from './deskStructure'
+import { customStyles } from './plugins/customStyles'
+import './styles/editor-overrides.css'
 
 export default defineConfig({
   name: 'default',
@@ -14,6 +16,7 @@ export default defineConfig({
   plugins: [
     structureTool({ structure: deskStructure }),
     media(),
+    customStyles(),
   ],
 
   document: {
