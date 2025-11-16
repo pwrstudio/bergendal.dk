@@ -6,6 +6,8 @@
     MainPageTop,
   } from "@sanity-types"
   import type { WorkExpanded, CvAndContactExpanded } from "$lib/types"
+  import { beforeNavigate, afterNavigate } from '$app/navigation'
+  import { saveScrollPosition, restoreScrollPosition } from '$lib/stores/scroll'
 
   export let data: {
     about: About
@@ -31,6 +33,21 @@
   import ListingComponent from "$lib/components/Listing.svelte"
   import CvAndContactComponent from "$lib/components/CvAndContact.svelte"
   import Metadata from "$lib/components/subs/Metadata.svelte"
+
+  // Save scroll position before navigating away from main page
+  beforeNavigate(({ from }) => {
+    if (from?.route.id === '/') {
+      saveScrollPosition('/')
+    }
+  })
+
+  // Restore scroll position when returning to main page
+  afterNavigate(({ from, to, type }) => {
+    // Only restore if we're navigating TO the main page FROM another page
+    if (to?.route.id === '/' && from?.route.id && from.route.id !== '/') {
+      restoreScrollPosition('/')
+    }
+  })
 </script>
 
 <Metadata />
