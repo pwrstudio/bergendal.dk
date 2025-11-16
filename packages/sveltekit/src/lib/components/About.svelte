@@ -13,10 +13,14 @@
   </div>
 
   <!-- IMAGE -->
-  <img src={urlFor(about.featuredImage).url()} alt="Kerstin Bergendal" class="work-intro-image" />
+   {#if about.featuredImage}
+    <img src={urlFor(about.featuredImage).url()} alt="Kerstin Bergendal" class="work-intro-image" />
+  {/if}
 
   <!-- TIMELINE -->
+  {#if about.startYear}
   <TimeLine startYear={about.startYear} endYear={about.endYear} />
+  {/if}
 </div>
 
 <style lang="scss">
