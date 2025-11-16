@@ -46,35 +46,47 @@
   .slideshow-track {
     display: flex;
     gap: 10px;
-    overflow-x: auto;
+    overflow-x: scroll; /* Changed from auto to scroll to force scrollbar */
     overflow-y: hidden;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 80px);
     padding: 20px;
+    padding-bottom: 30px; /* Extra padding for scrollbar */
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 
     @include screen-size("small") {
-      height: calc(70vh - 60px);
+      height: calc(70vh - 80px);
     }
 
-    /* Hide scrollbar but keep functionality */
+    /* Always visible scrollbar for Firefox */
     scrollbar-width: thin;
-    scrollbar-color: var(--green) transparent;
+    scrollbar-color: var(--green) rgba(0, 204, 102, 0.15);
 
+    /* Force scrollbar to always be visible on WebKit browsers */
     &::-webkit-scrollbar {
-      height: 10px;
+      -webkit-appearance: none;
+      height: 12px;
+      display: block;
     }
 
     &::-webkit-scrollbar-track {
-      background: transparent;
+      background: rgba(0, 204, 102, 0.15);
+      border-radius: 6px;
+      display: block;
     }
 
     &::-webkit-scrollbar-thumb {
       background: var(--green);
-      border-radius: 10px;
+      border-radius: 6px;
+      min-width: 50px;
+      display: block;
     }
 
     &::-webkit-scrollbar-thumb:hover {
+      background: var(--foreground);
+    }
+
+    &::-webkit-scrollbar-thumb:active {
       background: var(--foreground);
     }
   }

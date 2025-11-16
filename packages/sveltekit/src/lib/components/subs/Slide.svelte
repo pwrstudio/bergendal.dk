@@ -29,7 +29,7 @@
 
   .slide {
     flex-shrink: 0;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1em;
@@ -37,10 +37,9 @@
   }
 
   .slide-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
     max-height: calc(100% - 3em);
+    line-height: 0;
 
     img {
       max-height: calc(100vh - 200px);
@@ -60,6 +59,12 @@
   .caption {
     font-family: var(--font-family-normal);
     font-size: var(--font-size-small);
-    white-space: nowrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.2;
+    /* Prevent caption from expanding the slide width */
+    width: 0;
+    min-width: 100%;
   }
 </style>
