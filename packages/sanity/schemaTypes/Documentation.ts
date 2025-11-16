@@ -16,6 +16,12 @@ export default {
             validation: (Rule: any) => Rule.required(),
         },
         {
+            title: "Subtitle",
+            name: "subtitle",
+            type: "string",
+            description: "Optional subtitle for internal organization. Not shown on frontend.",
+        },
+        {
             title: "Start year",
             name: "startYear",
             type: "number",
@@ -88,7 +94,16 @@ export default {
     preview: {
         select: {
             title: 'title',
+            subtitle: 'subtitle',
             media: 'slideshow.0'
         },
+        prepare(selection: any) {
+            const { title, subtitle } = selection
+            return {
+                title: title,
+                subtitle: subtitle || '',
+                media: selection.media
+            }
+        }
     }
 }

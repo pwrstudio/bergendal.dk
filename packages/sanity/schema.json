@@ -129,6 +129,13 @@
         },
         "optional": true
       },
+      "subtitle": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "startYear": {
         "type": "objectAttribute",
         "value": {

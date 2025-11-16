@@ -36,6 +36,7 @@ export type Documentation = {
   _updatedAt: string
   _rev: string
   title?: string
+  subtitle?: string
   startYear?: number
   endYear?: number
   content?: ContentEditor

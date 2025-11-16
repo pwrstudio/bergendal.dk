@@ -9,7 +9,7 @@ import {
     MdList
 } from "react-icons/md"
 
-export default (S: any) =>
+export default (S: any, context: any) =>
     S.list()
         .title("bergendal.dk")
         .items([
@@ -47,13 +47,59 @@ export default (S: any) =>
             S.listItem()
                 .title("Documentation")
                 .icon(MdImage)
-                .child(
-                    S.documentList()
+                .child(async () => {
+                    // Fetch all works using the context client
+                    const client = context.getClient({ apiVersion: '2025-11-01' })
+                    const works = await client.fetch(`*[_type == "work"] | order(title asc) { _id, title, "documentation": documentation[]->._id }`)
+
+                    // Get all referenced documentation IDs
+                    const referencedDocIds = new Set(
+                        works.flatMap((work: any) => work.documentation || [])
+                    )
+
+                    return S.list()
                         .title('Documentation')
-                        .showIcons(true)
-                        .filter("_type == $type")
-                        .params({ type: "documentation" })
-                ),
+                        .items([
+                            // "All" folder
+                            S.listItem()
+                                .title('All')
+                                .icon(MdImage)
+                                .child(
+                                    S.documentList()
+                                        .title('All Documentation')
+                                        .filter('_type == "documentation"')
+                                        .showIcons(true)
+                                ),
+
+                            // "Not connected" folder
+                            S.listItem()
+                                .title('Not connected')
+                                .icon(MdImage)
+                                .child(
+                                    S.documentList()
+                                        .title('Not connected to any Work')
+                                        .filter('_type == "documentation" && !(_id in $ids)')
+                                        .params({ ids: Array.from(referencedDocIds) })
+                                        .showIcons(true)
+                                ),
+
+                            S.divider(),
+
+                            // One folder per Work
+                            ...works.map((work: any) =>
+                                S.listItem()
+                                    .title(work.title)
+                                    .icon(MdFolder)
+                                    .child(
+                                        S.documentList()
+                                            .title(`${work.title} - Documentation`)
+                                            .filter('_type == "documentation" && _id in $ids')
+                                            .params({ ids: work.documentation || [] })
+                                            .showIcons(true)
+                                    )
+                            )
+                        ])
+                }),
             S.divider(),
             S.listItem()
                 .title("About")
