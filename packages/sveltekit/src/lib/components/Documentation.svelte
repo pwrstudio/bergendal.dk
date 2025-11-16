@@ -49,7 +49,7 @@
     padding-top: 20px;
     padding-right: 20px;
     padding-left: 20px;
-    padding-bottom: 200px;
+    padding-bottom: 20px;
 
     @include screen-size("small") {
       position: static;
