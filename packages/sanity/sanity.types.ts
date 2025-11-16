@@ -207,6 +207,18 @@ export type CvAndContact = {
   _updatedAt: string
   _rev: string
   title?: string
+  portraitPhoto?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
   cv?: Array<{
     title?: string
     content?: ContentEditor

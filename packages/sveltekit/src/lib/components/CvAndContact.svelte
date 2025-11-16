@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { renderBlockText } from "$lib/modules/sanity"
+  import { renderBlockText, urlFor } from "$lib/modules/sanity"
   import type { CvAndContactExpanded } from "$lib/types"
   export let cvAndContact: CvAndContactExpanded
 </script>
@@ -8,23 +8,35 @@
 <div id="cv-and-contact" class="column-section cv-contact">
   <div class="cv-contact-title">CV / KERSTIN BERGENDAL</div>
 
-  <!-- CV -->
-  <div class="cv-contact-content">
-    {#each cvAndContact?.cv ?? [] as field}
-      <div class="cv-contact-content-row">
-        <div class="cv-contact-content-row-title">{field.title}</div>
-        <div class="cv-contact-content-row-content">
-          {@html renderBlockText(field.content?.content ?? [])}
-        </div>
-      </div>
-    {/each}
-
-    <!-- PDF -->
-    {#if cvAndContact?.fullCVUrl}
-      <div class="cv-contact-content-row link">
-        <a href={cvAndContact.fullCVUrl} target="_blank">FULL CV >>></a>
+  <div class="cv-contact-wrapper">
+    <!-- Portrait Photo -->
+    {#if cvAndContact?.portraitPhoto}
+      <div class="cv-portrait">
+        <img
+          src={urlFor(cvAndContact.portraitPhoto).width(600).quality(100).url()}
+          alt="Portrait"
+        />
       </div>
     {/if}
+
+    <!-- CV -->
+    <div class="cv-contact-content">
+      {#each cvAndContact?.cv ?? [] as field}
+        <div class="cv-contact-content-row">
+          <div class="cv-contact-content-row-title">{field.title}</div>
+          <div class="cv-contact-content-row-content">
+            {@html renderBlockText(field.content?.content ?? [])}
+          </div>
+        </div>
+      {/each}
+
+      <!-- PDF -->
+      {#if cvAndContact?.fullCVUrl}
+        <div class="cv-contact-content-row link">
+          <a href={cvAndContact.fullCVUrl} target="_blank">FULL CV >>></a>
+        </div>
+      {/if}
+    </div>
   </div>
 </div>
 
@@ -34,6 +46,43 @@
   .cv-contact {
     font-family: var(--font-family-extended);
     font-size: var(--font-size-medium);
+  }
+
+  .cv-contact-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+
+    @include screen-size("small") {
+      flex-direction: column;
+    }
+  }
+
+  .cv-contact-content {
+    flex: 1;
+    order: 1;
+
+    @include screen-size("small") {
+      order: 2;
+    }
+  }
+
+  .cv-portrait {
+    flex-shrink: 0;
+    width: 250px;
+    order: 2;
+
+    @include screen-size("small") {
+      width: 100%;
+      max-width: 250px;
+      order: 1;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
   }
 
   .cv-contact-content-row {

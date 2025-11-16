@@ -13,6 +13,12 @@ export default {
             validation: (Rule: any) => Rule.required(),
         },
         {
+            title: "Portrait Photo",
+            name: "portraitPhoto",
+            type: "image",
+            description: "Small portrait photo displayed in the CV section",
+        },
+        {
             title: 'CV',
             name: 'cv',
             type: 'array',
