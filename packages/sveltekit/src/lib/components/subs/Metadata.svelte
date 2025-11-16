@@ -1,8 +1,7 @@
 <script lang="ts">
   import type { Documentation } from "@sanity-types"
   import type { Image } from "$lib/types"
-  import truncate from "lodash/truncate.js"
-  import has from "lodash/has.js"
+  import { truncate } from "$lib/utils/string"
   import { toPlainText, urlFor } from "$lib/modules/sanity"
   export let post: Documentation | undefined = undefined
 

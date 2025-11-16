@@ -1,9 +1,9 @@
 import { loadData } from "$lib/modules/sanity"
 import { queries } from "$lib/groq"
 import type { MainPageData } from "$lib/types"
+import type { PageLoad } from './$types'
 
-/** @type {import('./$types').PageLoad} */
-export async function load() {
+export const load: PageLoad = async () => {
     const data: MainPageData = await loadData(queries.mainPageData, {})
     return {
         about: data.about,
@@ -12,5 +12,5 @@ export async function load() {
         textAndArchive: data.textAndArchive,
         contributionsToResearch: data.contributionsToResearch,
         works: data.workList?.works ?? []
-    };
+    }
 }

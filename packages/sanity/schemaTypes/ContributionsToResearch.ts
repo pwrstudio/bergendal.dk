@@ -44,7 +44,7 @@ export default {
                             year: 'year',
                             content: 'content'
                         },
-                        prepare(selection) {
+                        prepare(selection: any) {
                             const { year, content } = selection
                             const truncatedContent = content?.content ? truncateString(blocksToText(content.content), 50) : ""
                             return {

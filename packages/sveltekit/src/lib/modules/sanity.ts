@@ -1,26 +1,23 @@
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * *
 //
-//  sanity.js =>
+//  sanity.ts =>
 //  functions to work with the Sanity database
 //
 // * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-import type { Blocks } from "$lib/types"
 import { createClient } from "@sanity/client"
-import blocksToHtml from "@sanity/block-content-to-html"
+import { toHTML } from '@portabletext/to-html'
 import imageUrlBuilder from "@sanity/image-url"
-import get from "lodash/get.js"
+import type { PortableTextBlock } from '@portabletext/types'
 
 const SANITY_ID = "5pk6dy85"
 
 export const client = createClient({
     projectId: SANITY_ID,
     dataset: "production",
-    apiVersion: '2022-12-12', // use a UTC date string
+    apiVersion: '2025-11-01', // use a UTC date string
     useCdn: false,
 })
-
-const h = blocksToHtml.h
 
 function transformFileString(fileString: string): string {
     // Remove the "file-" prefix
@@ -35,15 +32,36 @@ function transformFileString(fileString: string): string {
     return trimmedString;
 }
 
-export const renderBlockText = (text: Blocks) =>
-    blocksToHtml({
-        blocks: text,
-        serializers: serializers,
-        projectId: SANITY_ID,
-        dataset: "production",
+export const renderBlockText = (blocks: any) => {
+    return toHTML(blocks as PortableTextBlock[], {
+        components: {
+            marks: {
+                link: ({ children, value }) => {
+                    const href = value?.href || ''
+                    const external = href.includes('http')
+                    const attrs = external
+                        ? `href="${href}" target="_blank" rel="noreferrer"`
+                        : `href="${href}"`
+                    return `<a ${attrs}>${children}</a>`
+                },
+                pdf: ({ children, value }) => {
+                    const BASE_URL = `https://cdn.sanity.io/files/${SANITY_ID}/production/`
+                    const fileRef = value?.file?.asset?._ref || ''
+                    const fileUrl = BASE_URL + transformFileString(fileRef)
+                    return `<a href="${fileUrl}" target="_blank" rel="noopener noreferrer">${children}</a>`
+                }
+            },
+            block: {
+                normal: ({ children }) => `<p>${children}</p>`,
+                blockquote: ({ children }) => `<blockquote>${children}</blockquote>`,
+                h2: ({ children }) => `<h2>${children}</h2>`,
+                h3: ({ children }) => `<h3>${children}</h3>`
+            }
+        }
     })
+}
 
-export const toPlainText = (blocks = [] as Blocks) => {
+export const toPlainText = (blocks: any[]) => {
     return blocks
         .map((block: any) => {
             if (block._type !== "block" || !block.children) {
@@ -52,39 +70,6 @@ export const toPlainText = (blocks = [] as Blocks) => {
             return block.children.map((child: any) => child.text).join("")
         })
         .join("\n\n")
-}
-
-const serializers = {
-    marks: {
-        link: (props: any) => {
-            const external = get(props, 'mark.href', '').includes('http')
-            let linkOptions = external ? { target: "_blank", rel: "noreferrer", href: props.mark.href } : { href: props.mark.href }
-            return h(
-                "a",
-                linkOptions,
-                props.children
-            )
-        },
-        pdf: (props: any) => {
-            // Accessing the full URL directly from the mark
-            const BASE_URL = `https://cdn.sanity.io/files/${SANITY_ID}/production/`
-            const fileUrl = BASE_URL + transformFileString(get(props, 'mark.file.asset._ref', ''))
-            return h(
-                "a",
-                { href: fileUrl, target: "_blank", rel: "noopener noreferrer" },
-                props.children
-            );
-        },
-    },
-    types: {
-        block: (props: any) => {
-            const style = props.node.style || "normal"
-            if (style === "blockquote") return h("blockquote", {}, props.children)
-            if (style === "h2") return h("h2", {}, props.children)
-            if (style === "h3") return h("h3", {}, props.children)
-            return h("p", { className: style }, props.children)
-        }
-    },
 }
 
 export const loadData = async (query: string, params: any) => {

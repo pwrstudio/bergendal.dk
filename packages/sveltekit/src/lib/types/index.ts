@@ -8,12 +8,8 @@ import type {
     Work,
     Documentation,
     SanityImageCrop,
-    SanityImageHotspot,
-    ContentEditor
+    SanityImageHotspot
 } from '@sanity-types'
-
-// Extract Blocks type from ContentEditor
-export type Blocks = NonNullable<ContentEditor['content']>
 
 // Extract Image type from Documentation slideshow
 export type Image = {
