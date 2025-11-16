@@ -59,6 +59,7 @@ export type Documentation = {
     | {
         url?: string
         year?: number
+        caption?: string
         _type: 'video'
         _key: string
       }

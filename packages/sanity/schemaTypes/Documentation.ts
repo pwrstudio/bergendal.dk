@@ -76,6 +76,11 @@ export default {
                             name: 'year',
                             type: 'number',
                         },
+                        {
+                            title: "Caption",
+                            name: "caption",
+                            type: "string",
+                        },
                     ]
                 },
             ],
