@@ -1,38 +1,93 @@
-# create-svelte
+# Bergendal Monorepo
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This is a monorepo containing the Bergendal frontend and CMS packages.
 
-## Creating a project
+## Structure
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```
+bergendal.dk/
+├── packages/
+│   ├── sveltekit/    # Frontend application
+│   └── sanity/       # CMS with Sanity
+├── package.json      # Root workspace configuration
+├── pnpm-workspace.yaml
+└── mprocs.yaml       # Multi-process runner config
 ```
 
-## Developing
+## Getting Started
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+### Install dependencies
 
 ```bash
-npm run build
+pnpm install
 ```
 
-You can preview the production build with `npm run preview`.
+### Development
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Run both frontend and CMS in development mode:
+
+```bash
+pnpm dev
+```
+
+This uses `mprocs` to run both services simultaneously.
+
+Or run them individually:
+
+```bash
+# Run SvelteKit frontend
+pnpm dev:sveltekit
+
+# Run Sanity CMS
+pnpm dev:sanity
+```
+
+### Build
+
+```bash
+# Build SvelteKit
+pnpm build:sveltekit
+
+# Build Sanity
+pnpm build:sanity
+```
+
+### Sanity Type Generation
+
+Generate TypeScript types from Sanity schema:
+
+```bash
+pnpm typegen:sanity
+```
+
+This will generate `sanity.types.ts` in the sanity package.
+
+### Deploy
+
+```bash
+# Deploy Sanity CMS
+pnpm deploy:sanity
+```
+
+## Importing Sanity Types
+
+The `@sanity-types` alias is configured to import types from the Sanity package. Use it in your SvelteKit app:
+
+```typescript
+import type { YourSanityType } from '@sanity-types';
+```
+
+The alias is configured in both `svelte.config.js` and `vite.config.ts` to point to `../sanity/sanity.types.ts`.
+
+## Package Management
+
+This monorepo uses pnpm workspaces. To add dependencies:
+
+```bash
+# Add to a specific package
+pnpm --filter sveltekit add <package>
+pnpm --filter sanity add <package>
+
+# Add to root
+pnpm add -w <package>
+```

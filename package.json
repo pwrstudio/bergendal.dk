@@ -1,34 +1,26 @@
 {
-	"name": "bergendal.dk",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^7.0.0",
-		"@sveltejs/kit": "^2.48.4",
-		"@sveltejs/vite-plugin-svelte": "^6.2.1",
-		"@types/lodash": "^4.17.20",
-		"sass": "^1.93.3",
-		"svelte": "^5.43.4",
-		"svelte-check": "^4.3.3",
-		"tslib": "^2.8.1",
-		"typescript": "^5.9.3",
-		"vite": "^7.2.2"
-	},
-	"type": "module",
-	"dependencies": {
-		"@sanity/block-content-to-html": "^2.0.0",
-		"@sanity/client": "^7.12.1",
-		"@sanity/image-url": "^1.2.0",
-		"@sanity/types": "^4.14.2",
-		"get-video-id": "^4.1.7",
-		"lodash": "^4.17.21",
-		"swiper": "^12.0.3"
-	}
+  "name": "bergendal",
+  "version": "1.0.0",
+  "description": "Bergendal monorepo",
+  "private": true,
+  "scripts": {
+    "dev:sveltekit": "pnpm --filter sveltekit dev",
+    "dev:sanity": "pnpm --filter sanity dev",
+    "dev": "mprocs",
+    "build:sveltekit": "pnpm --filter sveltekit build",
+    "build:sanity": "pnpm --filter sanity build",
+    "deploy:sanity": "pnpm --filter sanity deploy",
+    "typegen:sanity": "pnpm --filter sanity typegen"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "mprocs": "^0.7.3",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.18.1"
 }

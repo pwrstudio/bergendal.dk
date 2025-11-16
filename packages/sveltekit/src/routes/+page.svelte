@@ -1,0 +1,65 @@
+<script lang="ts">
+  import type {
+    About,
+    CvAndContact,
+    ContributionsToResearch,
+    TextAndArchive,
+    MainPageTop,
+  } from "@sanity-types"
+  import type { WorkExpanded, CvAndContactExpanded } from "$lib/types"
+
+  export let data: {
+    about: About
+    mainPageTop: MainPageTop
+    cvAndContact: CvAndContactExpanded
+    textAndArchive: TextAndArchive
+    contributionsToResearch: ContributionsToResearch
+    works: WorkExpanded[]
+  }
+
+  const {
+    about,
+    mainPageTop,
+    cvAndContact,
+    textAndArchive,
+    contributionsToResearch,
+    works,
+  } = data
+
+  import MainPageTopComponent from "$lib/components/MainPageTop.svelte"
+  import WorksComponent from "$lib/components/Works.svelte"
+  import AboutComponent from "$lib/components/About.svelte"
+  import ListingComponent from "$lib/components/Listing.svelte"
+  import CvAndContactComponent from "$lib/components/CvAndContact.svelte"
+  import Metadata from "$lib/components/subs/Metadata.svelte"
+</script>
+
+<Metadata />
+
+<div class="main-column">
+  <MainPageTopComponent {mainPageTop} />
+  <WorksComponent {works} />
+  <AboutComponent {about} />
+  <ListingComponent page={textAndArchive} />
+  <ListingComponent page={contributionsToResearch} />
+  <CvAndContactComponent {cvAndContact} />
+</div>
+
+<style lang="scss">
+  .main-column {
+    width: 800px;
+    max-width: 85vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 100px;
+
+    img {
+      max-width: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      display: block;
+    }
+  }
+</style>
