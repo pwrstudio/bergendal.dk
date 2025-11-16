@@ -1,9 +1,6 @@
 <script lang="ts">
   import { renderBlockText } from "$lib/modules/sanity"
-  import type {
-    TextAndArchive,
-    ContributionsToResearch,
-  } from "@sanity-types"
+  import type { TextAndArchive, ContributionsToResearch } from "@sanity-types"
   export let page: TextAndArchive | ContributionsToResearch
 
   const id =
@@ -40,7 +37,7 @@
 
   .listing-item {
     font-family: var(--font-family-extended);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-small);
 
     a {
       color: var(--green);
@@ -53,8 +50,8 @@
 
     .listing-year {
       font-size: var(--font-size-small);
-      margin-bottom: 1em;
-      margin-top: 1.5em;
+      margin-bottom: 5px;
+      margin-top: 1em;
     }
   }
 
