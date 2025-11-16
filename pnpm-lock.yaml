@@ -75,9 +75,6 @@ importers:
       get-video-id:
         specifier: ^4.1.7
         version: 4.1.7
-      swiper:
-        specifier: ^12.0.3
-        version: 12.0.3
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^7.0.0
@@ -5122,10 +5119,6 @@ packages:
   svelte@5.43.7:
     resolution: {integrity: sha512-S0NyuEEq5r205XqaWOMESHkqk1uQOo/e4qCKoaTCdELRFzUb+XVzuLQ4a7ushr7y/S3M5hjOBHlUq+xzi5Sy7g==}
     engines: {node: '>=18'}
-
-  swiper@12.0.3:
-    resolution: {integrity: sha512-BHd6U1VPEIksrXlyXjMmRWO0onmdNPaTAFduzqR3pgjvi7KfmUCAm/0cj49u2D7B0zNjMw02TSeXfinC1hDCXg==}
-    engines: {node: '>= 4.7.0'}
 
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
@@ -11708,8 +11701,6 @@ snapshots:
       locate-character: 3.0.0
       magic-string: 0.30.21
       zimmerframe: 1.1.4
-
-  swiper@12.0.3: {}
 
   symbol-tree@3.2.4: {}
 

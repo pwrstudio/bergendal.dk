@@ -1,49 +1,21 @@
 <script lang="ts">
   import type { Documentation } from "@sanity-types"
-  import { onMount } from "svelte"
-
-  import Swiper from "swiper"
-  import { Scrollbar } from "swiper/modules"
-  import "swiper/css"
-  import "swiper/css/scrollbar"
-
   import TLine from "$lib/components/subs/TLine.svelte"
   import Slide from "$lib/components/subs/Slide.svelte"
 
   export let post: Documentation
 
-  let swiper: Swiper
-  let activeIndex = 0
-
   $: numberOfSlides = post?.slideshow?.length ?? 0
-
-  onMount(() => {
-    swiper = new Swiper(".swiper", {
-      modules: [Scrollbar],
-      scrollbar: {
-        el: ".swiper-scrollbar",
-        draggable: true,
-      },
-    })
-    swiper.on("slideChange", () => {
-      activeIndex = swiper.activeIndex
-    })
-  })
 </script>
 
 <div class="slideshow">
-  <!-- Slider main container -->
-  <div class="swiper">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-      <!-- Slides -->
+  <div class="slideshow-container">
+    <!-- Slides -->
+    <div class="slideshow-track">
       {#each post.slideshow ?? [] as slide, index}
         <Slide {slide} {index} {numberOfSlides} />
       {/each}
     </div>
-
-    <!-- SCROLLBAR -->
-    <div class="swiper-scrollbar"></div>
 
     <!-- TIMELINE -->
     <div class="timeline">
@@ -55,45 +27,63 @@
 <style lang="scss">
   @use "../../styles/responsive.scss" as *;
 
-  .swiper {
-    margin-top: 0;
+  .slideshow {
+    width: 100%;
     height: 100vh;
     position: relative;
 
     @include screen-size("small") {
       height: 70vh;
     }
+  }
 
-    .swiper-wrapper {
-      height: calc(100vh - 100px);
+  .slideshow-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
 
-      @include screen-size("small") {
-        height: calc(70vh - 100px);
-      }
+  .slideshow-track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: calc(100vh - 60px);
+    padding: 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    @include screen-size("small") {
+      height: calc(70vh - 60px);
     }
 
-    .swiper-scrollbar {
-      position: absolute;
-      bottom: 57px;
-      left: 55px;
-      width: calc(100% - 130px);
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: thin;
+    scrollbar-color: var(--green) transparent;
+
+    &::-webkit-scrollbar {
       height: 10px;
-      z-index: 10;
+    }
+
+    &::-webkit-scrollbar-track {
       background: transparent;
     }
 
-    .timeline {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      z-index: 5;
-      width: calc(100% - 40px);
+    &::-webkit-scrollbar-thumb {
+      background: var(--green);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--foreground);
     }
   }
 
-  :global(.swiper-scrollbar-drag) {
-    background: var(--green) !important;
-    border-radius: 10px;
-    cursor: grab !important;
+  .timeline {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 5;
+    width: calc(100% - 40px);
   }
 </style>

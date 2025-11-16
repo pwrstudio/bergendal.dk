@@ -8,12 +8,14 @@
   export let numberOfSlides: number
 </script>
 
-<div class="swiper-slide">
-  {#if slide._type == "image"}
-    <img src={urlFor(slide).url()} alt={slide.caption} />
-  {:else if slide._type == "video"}
-    <VideoPlayer {slide} />
-  {/if}
+<div class="slide">
+  <div class="slide-content">
+    {#if slide._type == "image"}
+      <img src={urlFor(slide).url()} alt={slide.caption} />
+    {:else if slide._type == "video"}
+      <VideoPlayer {slide} />
+    {/if}
+  </div>
   <div class="caption">
     {`[${index + 1}/${numberOfSlides}] ${slide.caption ?? ""}`}
     {#if slide.year}
@@ -25,35 +27,39 @@
 <style lang="scss">
   @use "../../styles/responsive.scss" as *;
 
-  .swiper-slide {
-    height: 100%;
-    width: 100%;
-    position: relative;
+  .slide {
+    flex-shrink: 0;
     display: flex;
-    flex-direction: column; // Align items from top to bottom
-    align-items: flex-start; // Align items to the left
-    justify-content: flex-start; // Align items to the top
-    user-select: none;
-    cursor: grab;
-    padding-top: 36px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+    max-height: 100%;
+  }
+
+  .slide-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: calc(100% - 3em);
 
     img {
-      max-height: 95%;
-      max-width: calc(100% - 20px);
+      max-height: calc(100vh - 200px);
+      max-width: 55vw;
+      height: auto;
+      width: auto;
       object-fit: contain;
+      display: block;
 
       @include screen-size("small") {
-        max-height: 95%;
-        max-width: 95vw;
-        object-fit: contain;
+        max-height: calc(70vh - 200px);
+        max-width: 85vw;
       }
     }
+  }
 
-    .caption {
-      margin-top: 1em;
-      font-family: var(--font-family-normal);
-      font-size: var(--font-size-small);
-      margin-left: 20px;
-    }
+  .caption {
+    font-family: var(--font-family-normal);
+    font-size: var(--font-size-small);
+    white-space: nowrap;
   }
 </style>

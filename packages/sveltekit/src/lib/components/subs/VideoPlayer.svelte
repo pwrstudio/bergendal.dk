@@ -30,18 +30,37 @@
 </script>
 
 <div class="video">
-  {@html videoEmbedCode}
+  <div class="video-wrapper">
+    {@html videoEmbedCode}
+  </div>
 </div>
 
 <style lang="scss">
+  @use "../../styles/responsive.scss" as *;
+
   .video {
-    width: calc(100% - 20px);
-    max-height: 95%;
-    aspect-ratio: 16/9;
-    line-height: 0;
-    position: relative;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-wrapper {
+    position: relative;
+    /* Size to fit in 2/3 width container with some margin */
+    width: min(55vw, calc((100vh - 200px) * 16 / 9));
+    aspect-ratio: 16/9;
+
+    @include screen-size("small") {
+      width: min(85vw, calc((70vh - 200px) * 16 / 9));
+    }
+
+    :global(iframe) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
   }
 </style>
