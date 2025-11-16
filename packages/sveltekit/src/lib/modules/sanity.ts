@@ -60,6 +60,13 @@ export const renderBlockText = (blocks: any) => {
         blockquote: ({ children }) => `<blockquote>${children}</blockquote>`,
         h2: ({ children }) => `<h2>${children}</h2>`,
         h3: ({ children }) => `<h3>${children}</h3>`
+      },
+      types: {
+        image: ({ value }) => {
+          if (!value?.asset?._ref) return ""
+          const imageUrl = urlFor(value).url()
+          return `<figure><img src="${imageUrl}" alt="${value.alt || ""}" /></figure>`
+        }
       }
     }
   })
