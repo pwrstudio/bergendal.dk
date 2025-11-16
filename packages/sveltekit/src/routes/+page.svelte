@@ -52,14 +52,5 @@
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 100px;
-
-    img {
-      max-width: 100%;
-    }
-
-    iframe {
-      width: 100%;
-      display: block;
-    }
   }
 </style>

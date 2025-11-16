@@ -24,7 +24,7 @@
 </div>
 
 <style lang="scss">
-  @import "../styles/responsive.scss";
+  @use "../styles/responsive.scss" as *;
 
   .about-content {
     font-family: var(--font-family-extended);

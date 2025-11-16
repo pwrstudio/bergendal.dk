@@ -35,7 +35,7 @@
 </div>
 
 <style lang="scss">
-  @import "../styles/responsive.scss";
+  @use "../styles/responsive.scss" as *;
 
   .work-documentation-popover-text {
     position: fixed;

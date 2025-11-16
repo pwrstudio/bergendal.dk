@@ -53,7 +53,7 @@
 </div>
 
 <style lang="scss">
-  @import "../../styles/responsive.scss";
+  @use "../../styles/responsive.scss" as *;
 
   .swiper {
     margin-top: 0;

@@ -29,7 +29,7 @@
 </div>
 
 <style lang="scss">
-  @import "../styles/responsive.scss";
+  @use "../styles/responsive.scss" as *;
 
   .cv-contact {
     font-family: var(--font-family-extended);

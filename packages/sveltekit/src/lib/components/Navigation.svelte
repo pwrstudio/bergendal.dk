@@ -89,7 +89,7 @@
 </div>
 
 <style lang="scss">
-  @import "../styles/responsive.scss";
+  @use "../styles/responsive.scss" as *;
 
   $navigation-vertical-spacing: 30px;
   $navigation-horizontal-spacing: 30px;
@@ -103,10 +103,6 @@
 
     &:hover {
       text-decoration: none;
-    }
-
-    &.active {
-      text-decoration: none !important;
     }
   }
 
@@ -169,10 +165,6 @@
 
   .mobile-navigation-container {
     margin-bottom: 7px;
-
-    &.active {
-      display: block;
-    }
   }
 
   .navigation--link--mobile {
@@ -185,27 +177,5 @@
     left: -2px;
     cursor: pointer;
     float: left;
-  }
-
-  .work-documentation-popover-mobile-bar-nav {
-    position: absolute;
-    left: 50%;
-    margin-left: -50px;
-  }
-
-  .work-documentation-popover-mobile-bar-dot {
-    float: left;
-    padding-right: 10px;
-
-    svg {
-      position: relative;
-      top: 6px;
-      height: 20px;
-    }
-
-    &:hover {
-      fill: var(--green);
-      cursor: pointer;
-    }
   }
 </style>
