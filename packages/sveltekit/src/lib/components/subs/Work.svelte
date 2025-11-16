@@ -60,7 +60,7 @@
   .work-meta {
     font-family: var(--font-family-normal);
     font-size: var(--font-size-small);
-    margin-bottom: 0.5em;
+    margin-bottom: 5px;
   }
 
   .work-summary {
@@ -74,7 +74,7 @@
 
   .work-documentation {
     padding-left: 50px;
-    margin-top: 20px;
+    margin-top: 5px;
   }
 
   .work-documentation-item {
