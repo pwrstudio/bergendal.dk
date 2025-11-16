@@ -10,17 +10,14 @@
   const BASE_URL = "https://bergendal.dk"
   const DEFAULT_IMAGE = "https://bergendal.dk/images/default.jpg"
 
-  const getTitle = (p: Documentation) =>
-    (p.title ? p.title + " | " : "") + BASE_TITLE
+  const getTitle = (p: Documentation) => (p.title ? p.title + " | " : "") + BASE_TITLE
 
   const getDescription = (p: Documentation) => {
     if (!p.content) return DEFAULT_DESCRIPTION
-    const d = p.content.content
-      ? toPlainText(p.content.content)
-      : DEFAULT_DESCRIPTION
+    const d = p.content.content ? toPlainText(p.content.content) : DEFAULT_DESCRIPTION
     return truncate(d, {
       length: 240,
-      separator: /.? +/,
+      separator: /.? +/
     })
   }
 

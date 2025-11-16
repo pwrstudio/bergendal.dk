@@ -2,16 +2,16 @@
 @use "sass:meta";
 
 $breakpoints: (
-  'small': (
+  "small": (
     max-width: 900px
   ),
-  'medium': (
+  "medium": (
     max-width: 1000px
   ),
-  'large': (
+  "large": (
     max-width: 1600px
   ),
-  'short': (
+  "short": (
     max-height: 700px
   )
 );

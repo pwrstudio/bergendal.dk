@@ -1,10 +1,5 @@
 <script lang="ts">
-  import type {
-    About,
-    ContributionsToResearch,
-    TextAndArchive,
-    MainPageTop,
-  } from "@sanity-types"
+  import type { About, ContributionsToResearch, TextAndArchive, MainPageTop } from "@sanity-types"
   import type { WorkExpanded, CvAndContactExpanded } from "$lib/types"
   import { beforeNavigate, afterNavigate } from "$app/navigation"
   import { saveScrollPosition, restoreScrollPosition } from "$lib/stores/scroll"
@@ -18,14 +13,7 @@
     works: WorkExpanded[]
   }
 
-  const {
-    about,
-    mainPageTop,
-    cvAndContact,
-    textAndArchive,
-    contributionsToResearch,
-    works,
-  } = data
+  const { about, mainPageTop, cvAndContact, textAndArchive, contributionsToResearch, works } = data
 
   import MainPageTopComponent from "$lib/components/MainPageTop.svelte"
   import WorksComponent from "$lib/components/Works.svelte"

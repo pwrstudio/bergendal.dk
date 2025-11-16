@@ -1,94 +1,98 @@
-import { MdImage } from 'react-icons/md';
-import { NormalStyle, SmallTextStyle, MediumTextStyle, LargeTextStyle } from '../components/BlockStyleComponents';
+import { MdImage } from "react-icons/md"
+import {
+  NormalStyle,
+  SmallTextStyle,
+  MediumTextStyle,
+  LargeTextStyle
+} from "../components/BlockStyleComponents"
 
 export default {
-    title: 'Content editor',
-    type: 'object',
-    name: 'contentEditor',
-    options: { collapsible: false, collapsed: false },
-    fields: [
+  title: "Content editor",
+  type: "object",
+  name: "contentEditor",
+  options: { collapsible: false, collapsed: false },
+  fields: [
+    {
+      title: "Content editor",
+      name: "content",
+      description: "To make a single line-break within a paragraph, press SHIFT + ENTER",
+      type: "array",
+      of: [
         {
-            title: 'Content editor',
-            name: 'content',
-            description: 'To make a single line-break within a paragraph, press SHIFT + ENTER',
-            type: 'array',
-            of: [
-                {
-                    type: 'block',
-                    styles: [
-                        {
-                            title: 'Normal',
-                            value: 'normal',
-                            component: NormalStyle
-                        },
-                        {
-                            title: 'Small text',
-                            value: 'textSizeSmall',
-                            component: SmallTextStyle
-                        },
-                        {
-                            title: 'Medium text',
-                            value: 'textSizeMedium',
-                            component: MediumTextStyle
-                        },
-                        {
-                            title: 'Large text',
-                            value: 'textSizeLarge',
-                            component: LargeTextStyle
-                        },
-                        // { title: 'Quote', value: 'blockquote' },
-                        // { title: 'H1', value: 'h1' },
-                        // { title: 'H2', value: 'h2' },
-                        // { title: 'H3', value: 'h3' },
-                    ],
-                    lists: [],
-                    marks: {
-                        decorators: [
-                            {
-                                title: 'Italic',
-                                value: 'em'
-                            },
-                        ],
-                        annotations: [
-                            {
-                                name: 'link',
-                                type: 'object',
-                                title: 'Link',
-                                fields: [
-                                    {
-                                        name: 'href',
-                                        type: 'string'
-                                    }
-                                ]
-                            },
-
-                        ]
-                    },
-                },
-                {
-                    type: 'image',
-                    icon: MdImage
-                },
-                // {
-                //     name: 'embedBlock',
-                //     title: 'Embed code',
-                //     type: 'object',
-                //     icon: MdPictureInPicture,
-                //     fields: [
-                //         {
-                //             name: 'url',
-                //             description: 'Link to Youtube or Vimeo video or soundcloud track',
-                //             type: 'url',
-                //             title: 'URL'
-                //         },
-                //         {
-                //             title: 'Caption',
-                //             name: 'caption',
-                //             type: 'text',
-                //         },
-                //     ],
-                // }
+          type: "block",
+          styles: [
+            {
+              title: "Normal",
+              value: "normal",
+              component: NormalStyle
+            },
+            {
+              title: "Small text",
+              value: "textSizeSmall",
+              component: SmallTextStyle
+            },
+            {
+              title: "Medium text",
+              value: "textSizeMedium",
+              component: MediumTextStyle
+            },
+            {
+              title: "Large text",
+              value: "textSizeLarge",
+              component: LargeTextStyle
+            }
+            // { title: 'Quote', value: 'blockquote' },
+            // { title: 'H1', value: 'h1' },
+            // { title: 'H2', value: 'h2' },
+            // { title: 'H3', value: 'h3' },
+          ],
+          lists: [],
+          marks: {
+            decorators: [
+              {
+                title: "Italic",
+                value: "em"
+              }
+            ],
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [
+                  {
+                    name: "href",
+                    type: "string"
+                  }
+                ]
+              }
             ]
+          }
+        },
+        {
+          type: "image",
+          icon: MdImage
         }
-    ]
+        // {
+        //     name: 'embedBlock',
+        //     title: 'Embed code',
+        //     type: 'object',
+        //     icon: MdPictureInPicture,
+        //     fields: [
+        //         {
+        //             name: 'url',
+        //             description: 'Link to Youtube or Vimeo video or soundcloud track',
+        //             type: 'url',
+        //             title: 'URL'
+        //         },
+        //         {
+        //             title: 'Caption',
+        //             name: 'caption',
+        //             type: 'text',
+        //         },
+        //     ],
+        // }
+      ]
+    }
+  ]
 }

@@ -1,12 +1,12 @@
-import { definePlugin } from 'sanity'
+import { definePlugin } from "sanity"
 
 export const customStyles = definePlugin({
-  name: 'custom-styles',
+  name: "custom-styles",
   studio: {
     components: {
-      layout: (props) => {
+      layout: props => {
         // Inject custom styles for Sanity portable text editor
-        const style = document.createElement('style')
+        const style = document.createElement("style")
         style.textContent = `
           /* Target Sanity portable text editor blocks with custom styles */
           [data-testid="pt-editor"] [data-block-style="textSizeSmall"],
@@ -38,12 +38,12 @@ export const customStyles = definePlugin({
             font-size: 24px !important;
           }
         `
-        if (!document.head.querySelector('#custom-editor-styles')) {
-          style.id = 'custom-editor-styles'
+        if (!document.head.querySelector("#custom-editor-styles")) {
+          style.id = "custom-editor-styles"
           document.head.appendChild(style)
         }
         return props.renderDefault(props)
-      },
-    },
-  },
+      }
+    }
+  }
 })

@@ -9,15 +9,10 @@
 </script>
 
 <!-- About -->
-<a href="#about" class="navigation--link navigation--link--fixed about">
-  About
-</a>
+<a href="#about" class="navigation--link navigation--link--fixed about"> About </a>
 
 <!-- CV & Contact -->
-<a
-  href="#cv-and-contact"
-  class="navigation--link navigation--link--fixed cv-contact"
->
+<a href="#cv-and-contact" class="navigation--link navigation--link--fixed cv-contact">
   CV & Contact
 </a>
 
@@ -28,9 +23,7 @@
 <div class="navigation--link--fixed text-archive-research">
   <a class="navigation--link" href="#text-and-archive">Text & Archive</a>
   /
-  <a class="navigation--link" href="#contributions-to-research">
-    Contributions to research
-  </a>
+  <a class="navigation--link" href="#contributions-to-research"> Contributions to research </a>
 </div>
 
 <!-- Mobile navigation -->

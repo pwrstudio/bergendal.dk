@@ -1,42 +1,38 @@
-import { defineConfig } from 'sanity'
-import { structureTool } from 'sanity/structure'
-import { schemaTypes } from './schemaTypes'
-import { media } from 'sanity-plugin-media'
-import deskStructure from './deskStructure'
-import { customStyles } from './plugins/customStyles'
-import './styles/editor-overrides.css'
+import { defineConfig } from "sanity"
+import { structureTool } from "sanity/structure"
+import { schemaTypes } from "./schemaTypes"
+import { media } from "sanity-plugin-media"
+import deskStructure from "./deskStructure"
+import { customStyles } from "./plugins/customStyles"
+import "./styles/editor-overrides.css"
 
 export default defineConfig({
-  name: 'default',
-  title: 'bergendal.dk',
+  name: "default",
+  title: "bergendal.dk",
 
-  projectId: '5pk6dy85',
-  dataset: 'production',
+  projectId: "5pk6dy85",
+  dataset: "production",
 
-  plugins: [
-    structureTool({ structure: deskStructure }),
-    media(),
-    customStyles(),
-  ],
+  plugins: [structureTool({ structure: deskStructure }), media(), customStyles()],
 
   document: {
     newDocumentOptions: (prev, { creationContext }) => {
-      const { type } = creationContext;
+      const { type } = creationContext
       const DISABLED_TYPES = [
-        'about',
-        'contributionsToResearch',
-        'cvAndContact',
-        'textAndArchive',
-        'mainPageTop'
-      ];
-      if (type === 'global') {
-        return prev.filter((template) => !DISABLED_TYPES.includes(template.templateId));
+        "about",
+        "contributionsToResearch",
+        "cvAndContact",
+        "textAndArchive",
+        "mainPageTop"
+      ]
+      if (type === "global") {
+        return prev.filter(template => !DISABLED_TYPES.includes(template.templateId))
       }
-      return prev;
-    },
+      return prev
+    }
   },
 
   schema: {
-    types: schemaTypes,
-  },
+    types: schemaTypes
+  }
 })

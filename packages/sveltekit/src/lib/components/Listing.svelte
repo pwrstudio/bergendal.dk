@@ -3,10 +3,7 @@
   import type { TextAndArchive, ContributionsToResearch } from "@sanity-types"
   export let page: TextAndArchive | ContributionsToResearch
 
-  const id =
-    page._type === "textAndArchive"
-      ? "text-and-archive"
-      : "contributions-to-research"
+  const id = page._type === "textAndArchive" ? "text-and-archive" : "contributions-to-research"
 </script>
 
 <!-- LISTING -->

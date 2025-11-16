@@ -62,6 +62,25 @@ pnpm typegen:sanity
 
 This will generate `sanity.types.ts` in the sanity package.
 
+### Code Formatting
+
+Format all code in the monorepo:
+
+```bash
+# Format all files
+pnpm format
+
+# Check formatting without making changes
+pnpm format:check
+```
+
+The project uses Prettier with the following settings:
+- No semicolons
+- Double quotes
+- 2 space indentation
+- 100 character line width
+- LF line endings
+
 ### Deploy
 
 ```bash
@@ -74,7 +93,7 @@ pnpm deploy:sanity
 The `@sanity-types` alias is configured to import types from the Sanity package. Use it in your SvelteKit app:
 
 ```typescript
-import type { YourSanityType } from '@sanity-types';
+import type { YourSanityType } from "@sanity-types"
 ```
 
 The alias is configured in both `svelte.config.js` and `vite.config.ts` to point to `../sanity/sanity.types.ts`.

@@ -13,11 +13,7 @@
   </div>
 
   <!-- IMAGE -->
-  <img
-    src={urlFor(about.featuredImage).url()}
-    alt="Kerstin Bergendal"
-    class="work-intro-image"
-  />
+  <img src={urlFor(about.featuredImage).url()} alt="Kerstin Bergendal" class="work-intro-image" />
 
   <!-- TIMELINE -->
   <TimeLine startYear={about.startYear} endYear={about.endYear} />

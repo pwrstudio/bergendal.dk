@@ -7,8 +7,7 @@
 
   // Determine layout
   const text = post.content?.content ?? false
-  const slides =
-    post.slideshow && Array.isArray(post.slideshow) && post.slideshow.length > 0
+  const slides = post.slideshow && Array.isArray(post.slideshow) && post.slideshow.length > 0
   // Slides only
   const visual = slides && !text
 </script>

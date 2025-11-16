@@ -9,7 +9,7 @@ export function truncate(
     omission?: string
   } = {}
 ): string {
-  const { length = 30, separator, omission = '...' } = options
+  const { length = 30, separator, omission = "..." } = options
 
   if (str.length <= length) {
     return str
@@ -20,11 +20,11 @@ export function truncate(
   if (separator) {
     // Find the last occurrence of the separator before the truncation point
     let separatorRegex: RegExp
-    if (typeof separator === 'string') {
-      separatorRegex = new RegExp(separator.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')
+    if (typeof separator === "string") {
+      separatorRegex = new RegExp(separator.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g")
     } else {
       // Ensure the regex has the global flag for matchAll
-      const flags = separator.flags.includes('g') ? separator.flags : separator.flags + 'g'
+      const flags = separator.flags.includes("g") ? separator.flags : separator.flags + "g"
       separatorRegex = new RegExp(separator.source, flags)
     }
 
