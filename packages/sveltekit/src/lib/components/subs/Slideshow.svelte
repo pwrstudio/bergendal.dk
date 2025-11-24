@@ -2,21 +2,58 @@
   import type { Documentation } from "@sanity-types"
   import TLine from "$lib/components/subs/TLine.svelte"
   import Slide from "$lib/components/subs/Slide.svelte"
+  import ArrowLeft from "$lib/components/subs/ArrowLeft.svelte"
+  import ArrowRight from "$lib/components/subs/ArrowRight.svelte"
 
   let { post }: { post: Documentation } = $props()
 
   let numberOfSlides = $derived(post?.slideshow?.length ?? 0)
   let showTimeline = $derived(!!post.startYear)
+
+  let slideshowTrack: HTMLDivElement
+  let currentSlide = $state(0)
+
+  function scrollToSlide(index: number) {
+    const slides = slideshowTrack.querySelectorAll(".slide")
+    if (slides[index]) {
+      slides[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })
+      currentSlide = index
+    }
+  }
+
+  function nextSlide() {
+    if (currentSlide < numberOfSlides - 1) {
+      scrollToSlide(currentSlide + 1)
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      scrollToSlide(currentSlide - 1)
+    }
+  }
 </script>
 
 <div class="slideshow">
   <div class="slideshow-container">
     <!-- Slides -->
-    <div class="slideshow-track" class:no-timeline={!showTimeline}>
+    <div class="slideshow-track" class:no-timeline={!showTimeline} bind:this={slideshowTrack}>
       {#each post.slideshow ?? [] as slide, index}
         <Slide {slide} {index} {numberOfSlides} />
       {/each}
     </div>
+
+    <!-- Navigation Arrows -->
+    {#if currentSlide > 0}
+      <button class="arrow arrow-left" onclick={prevSlide} aria-label="Previous slide">
+        <ArrowLeft />
+      </button>
+    {/if}
+    {#if currentSlide < numberOfSlides - 1}
+      <button class="arrow arrow-right" onclick={nextSlide} aria-label="Next slide">
+        <ArrowRight />
+      </button>
+    {/if}
 
     <!-- TIMELINE -->
     {#if showTimeline}
@@ -109,5 +146,42 @@
     left: 20px;
     z-index: 5;
     width: calc(100% - 40px);
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    color: var(--green);
+    padding: 5px;
+    z-index: 10;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--foreground);
+    }
+
+    &.arrow-left {
+      left: 20px;
+
+      @include screen-size("small") {
+        display: none;
+      }
+    }
+
+    &.arrow-right {
+      right: 20px;
+
+      @include screen-size("small") {
+        display: none;
+      }
+    }
+
+    @include screen-size("small") {
+      display: none;
+    }
   }
 </style>

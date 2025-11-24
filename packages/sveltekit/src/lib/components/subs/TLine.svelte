@@ -3,7 +3,7 @@
     startYear,
     endYear: endYearProp
   }: {
-    startYear: number
+    startYear: number | undefined
     endYear?: number
   } = $props()
 
