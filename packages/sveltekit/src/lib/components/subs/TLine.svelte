@@ -3,22 +3,20 @@
     startYear,
     endYear: endYearProp
   }: {
-    startYear: number | undefined
-    endYear: number | undefined
+    startYear: number
+    endYear?: number
   } = $props()
 
   // Default to current year if no end year is provided
   let endYear = endYearProp ?? new Date().getFullYear()
 </script>
 
-{#if startYear}
-  <div class="timeline">
-    <div class="timeline-start">{startYear}</div>
-    <div class="timeline-dots"></div>
-    <div class="timeline-arrow"></div>
-    <div class="timeline-end">{endYear}</div>
-  </div>
-{/if}
+<div class="timeline">
+  <div class="timeline-start">{startYear}</div>
+  <div class="timeline-dots"></div>
+  <div class="timeline-arrow"></div>
+  <div class="timeline-end">{endYear}</div>
+</div>
 
 <style lang="scss">
   // Timeline

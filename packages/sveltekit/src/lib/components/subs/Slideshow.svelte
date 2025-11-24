@@ -6,21 +6,24 @@
   let { post }: { post: Documentation } = $props()
 
   let numberOfSlides = $derived(post?.slideshow?.length ?? 0)
+  let showTimeline = $derived(!!post.startYear)
 </script>
 
 <div class="slideshow">
   <div class="slideshow-container">
     <!-- Slides -->
-    <div class="slideshow-track">
+    <div class="slideshow-track" class:no-timeline={!showTimeline}>
       {#each post.slideshow ?? [] as slide, index}
         <Slide {slide} {index} {numberOfSlides} />
       {/each}
     </div>
 
     <!-- TIMELINE -->
-    <div class="timeline">
-      <TLine startYear={post.startYear} endYear={post.endYear} />
-    </div>
+    {#if showTimeline}
+      <div class="timeline">
+        <TLine startYear={post.startYear!} endYear={post.endYear} />
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -49,7 +52,6 @@
     overflow-x: scroll; /* Changed from auto to scroll to force scrollbar */
     overflow-y: hidden;
     height: calc(100vh - 80px);
-    background: blue;
     padding: 20px;
     padding-bottom: 30px; /* Extra padding for scrollbar */
     scroll-behavior: smooth;
@@ -90,6 +92,15 @@
     &::-webkit-scrollbar-thumb:active {
       background: var(--foreground);
     }
+
+    &.no-timeline {
+      padding-bottom: 0;
+      height: calc(100vh - 10px);
+
+      @include screen-size("small") {
+        height: calc(70vh - 10px);
+      }
+    }
   }
 
   .timeline {
@@ -98,6 +109,5 @@
     left: 20px;
     z-index: 5;
     width: calc(100% - 40px);
-    background: red;
   }
 </style>
