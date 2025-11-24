@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte"
   import type { Documentation } from "@sanity-types"
   import TLine from "$lib/components/subs/TLine.svelte"
   import Slide from "$lib/components/subs/Slide.svelte"
@@ -32,6 +33,43 @@
       scrollToSlide(currentSlide - 1)
     }
   }
+
+  onMount(() => {
+    // Track which slide is currently visible using IntersectionObserver
+    const slides = slideshowTrack.querySelectorAll(".slide")
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the slide with the highest intersection ratio
+        let maxRatio = 0
+        let mostVisibleIndex = 0
+
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio
+            const index = Array.from(slides).indexOf(entry.target)
+            if (index >= 0) {
+              mostVisibleIndex = index
+            }
+          }
+        })
+
+        if (maxRatio > 0.5) {
+          currentSlide = mostVisibleIndex
+        }
+      },
+      {
+        root: slideshowTrack,
+        threshold: [0, 0.25, 0.5, 0.75, 1.0]
+      }
+    )
+
+    slides.forEach((slide) => observer.observe(slide))
+
+    return () => {
+      observer.disconnect()
+    }
+  })
 </script>
 
 <div class="slideshow">
