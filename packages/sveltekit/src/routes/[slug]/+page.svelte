@@ -1,9 +1,13 @@
 <script lang="ts">
   import type { Documentation } from "@sanity-types"
 
-  export let data: {
-    post: Documentation
-  }
+  let {
+    data
+  }: {
+    data: {
+      post: Documentation
+    }
+  } = $props()
 
   const { post } = data
 

@@ -1,12 +1,17 @@
 <script lang="ts">
   import getVideoId from "get-video-id"
 
-  export let slide: {
-    url?: string
-    year?: number
-    _type: "video"
-    _key: string
-  }
+  let {
+    slide
+  }: {
+    slide: {
+      url?: string
+      year?: number
+      _type: "video"
+      _key: string
+    }
+  } = $props()
+
   let postfix = ""
 
   function generateEmbedCode(url: string): string {
@@ -26,7 +31,7 @@
     }
   }
 
-  let videoEmbedCode = slide.url ? generateEmbedCode(slide.url) : ""
+  let videoEmbedCode = $derived(slide.url ? generateEmbedCode(slide.url) : "")
 </script>
 
 <div class="video">

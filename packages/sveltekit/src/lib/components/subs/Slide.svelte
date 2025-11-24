@@ -3,9 +3,15 @@
 
   import VideoPlayer from "$lib/components/subs/VideoPlayer.svelte"
 
-  export let slide: any
-  export let index: number
-  export let numberOfSlides: number
+  let {
+    slide,
+    index,
+    numberOfSlides
+  }: {
+    slide: any
+    index: number
+    numberOfSlides: number
+  } = $props()
 </script>
 
 <div class="slide">

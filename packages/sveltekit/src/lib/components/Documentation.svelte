@@ -1,7 +1,8 @@
 <script lang="ts">
   import { renderBlockText } from "$lib/modules/sanity"
   import type { Documentation } from "@sanity-types"
-  export let post: Documentation
+
+  let { post }: { post: Documentation } = $props()
 
   import Slideshow from "$lib/components/subs/Slideshow.svelte"
 

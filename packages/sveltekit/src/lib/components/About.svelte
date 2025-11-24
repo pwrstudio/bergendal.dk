@@ -1,7 +1,8 @@
 <script lang="ts">
   import { renderBlockText, urlFor } from "$lib/modules/sanity"
   import type { About } from "@sanity-types"
-  export let about: About
+
+  let { about }: { about: About } = $props()
 
   import TimeLine from "$lib/components/subs/TLine.svelte"
 </script>

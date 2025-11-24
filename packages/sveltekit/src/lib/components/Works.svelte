@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { WorkExpanded } from "$lib/types"
-  export let works: WorkExpanded[]
+
+  let { works }: { works: WorkExpanded[] } = $props()
 
   import WorkComponent from "$lib/components/subs/Work.svelte"
 </script>

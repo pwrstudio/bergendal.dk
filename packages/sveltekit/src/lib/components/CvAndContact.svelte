@@ -1,7 +1,8 @@
 <script lang="ts">
   import { renderBlockText, urlFor } from "$lib/modules/sanity"
   import type { CvAndContactExpanded } from "$lib/types"
-  export let cvAndContact: CvAndContactExpanded
+
+  let { cvAndContact }: { cvAndContact: CvAndContactExpanded } = $props()
 </script>
 
 <!-- CV & CONTACT-->

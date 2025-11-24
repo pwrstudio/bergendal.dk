@@ -3,7 +3,8 @@
   import type { Image } from "$lib/types"
   import { truncate } from "$lib/utils/string"
   import { toPlainText, urlFor } from "$lib/modules/sanity"
-  export let post: Documentation | undefined = undefined
+
+  let { post = undefined }: { post?: Documentation | undefined } = $props()
 
   const BASE_TITLE = "Kerstin Bergendal"
   const DEFAULT_DESCRIPTION = "Kerstin Bergendal"
@@ -33,10 +34,10 @@
     }
   }
 
-  let title = post ? getTitle(post) : BASE_TITLE
-  let description = post ? getDescription(post) : DEFAULT_DESCRIPTION
-  let url = post ? getUrl(post) : BASE_URL
-  let image = post ? getImage(post) : DEFAULT_IMAGE
+  let title = $derived(post ? getTitle(post) : BASE_TITLE)
+  let description = $derived(post ? getDescription(post) : DEFAULT_DESCRIPTION)
+  let url = $derived(post ? getUrl(post) : BASE_URL)
+  let image = $derived(post ? getImage(post) : DEFAULT_IMAGE)
 </script>
 
 <svelte:head>

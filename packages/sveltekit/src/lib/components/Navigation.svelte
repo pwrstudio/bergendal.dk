@@ -1,7 +1,7 @@
 <script lang="ts">
   import Burger from "$lib/components/subs/Burger.svelte"
 
-  let mobileNavigationActive = false
+  let mobileNavigationActive = $state(false)
 
   function toggleMobileNavigation() {
     mobileNavigationActive = !mobileNavigationActive
@@ -34,7 +34,7 @@
       <a
         href="#work"
         class="navigation--link navigation--link--mobile"
-        on:click={toggleMobileNavigation}
+        onclick={toggleMobileNavigation}
       >
         Work
       </a>
@@ -42,7 +42,7 @@
       <a
         href="#about"
         class="navigation--link navigation--link--mobile"
-        on:click={toggleMobileNavigation}
+        onclick={toggleMobileNavigation}
       >
         About
       </a>
@@ -50,7 +50,7 @@
       <a
         href="#text-and-archive"
         class="navigation--link navigation--link--mobile"
-        on:click={toggleMobileNavigation}
+        onclick={toggleMobileNavigation}
       >
         Text & Archive
       </a>
@@ -58,7 +58,7 @@
       <a
         href="#contributions-to-research"
         class="navigation--link navigation--link--mobile"
-        on:click={toggleMobileNavigation}
+        onclick={toggleMobileNavigation}
       >
         Contributions to research
       </a>
@@ -66,7 +66,7 @@
       <a
         href="#cv-and-contact"
         class="navigation--link navigation--link--mobile"
-        on:click={toggleMobileNavigation}
+        onclick={toggleMobileNavigation}
       >
         CV & Contact
       </a>
@@ -74,9 +74,9 @@
   {/if}
 
   <!-- Burger -->
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div id="burger" class="navigation--burger" on:click={toggleMobileNavigation}>
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div id="burger" class="navigation--burger" onclick={toggleMobileNavigation}>
     <Burger />
   </div>
 </div>

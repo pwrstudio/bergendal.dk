@@ -4,14 +4,18 @@
   import { beforeNavigate, afterNavigate } from "$app/navigation"
   import { saveScrollPosition, restoreScrollPosition } from "$lib/stores/scroll"
 
-  export let data: {
-    about: About
-    mainPageTop: MainPageTop
-    cvAndContact: CvAndContactExpanded
-    textAndArchive: TextAndArchive
-    contributionsToResearch: ContributionsToResearch
-    works: WorkExpanded[]
-  }
+  let {
+    data
+  }: {
+    data: {
+      about: About
+      mainPageTop: MainPageTop
+      cvAndContact: CvAndContactExpanded
+      textAndArchive: TextAndArchive
+      contributionsToResearch: ContributionsToResearch
+      works: WorkExpanded[]
+    }
+  } = $props()
 
   const { about, mainPageTop, cvAndContact, textAndArchive, contributionsToResearch, works } = data
 

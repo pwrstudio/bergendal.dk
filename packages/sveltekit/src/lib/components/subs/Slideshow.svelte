@@ -3,9 +3,9 @@
   import TLine from "$lib/components/subs/TLine.svelte"
   import Slide from "$lib/components/subs/Slide.svelte"
 
-  export let post: Documentation
+  let { post }: { post: Documentation } = $props()
 
-  $: numberOfSlides = post?.slideshow?.length ?? 0
+  let numberOfSlides = $derived(post?.slideshow?.length ?? 0)
 </script>
 
 <div class="slideshow">
@@ -49,6 +49,7 @@
     overflow-x: scroll; /* Changed from auto to scroll to force scrollbar */
     overflow-y: hidden;
     height: calc(100vh - 80px);
+    background: blue;
     padding: 20px;
     padding-bottom: 30px; /* Extra padding for scrollbar */
     scroll-behavior: smooth;
@@ -93,9 +94,10 @@
 
   .timeline {
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     left: 20px;
     z-index: 5;
     width: calc(100% - 40px);
+    background: red;
   }
 </style>

@@ -1,7 +1,8 @@
 <script lang="ts">
   import { renderBlockText } from "$lib/modules/sanity"
   import type { TextAndArchive, ContributionsToResearch } from "@sanity-types"
-  export let page: TextAndArchive | ContributionsToResearch
+
+  let { page }: { page: TextAndArchive | ContributionsToResearch } = $props()
 
   const id = page._type === "textAndArchive" ? "text-and-archive" : "contributions-to-research"
 </script>

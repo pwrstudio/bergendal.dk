@@ -1,7 +1,8 @@
 <script lang="ts">
   import { renderBlockText } from "$lib/modules/sanity"
   import type { WorkExpanded } from "$lib/types"
-  export let work: WorkExpanded
+
+  let { work }: { work: WorkExpanded } = $props()
 
   function formatNumber(num: number): string {
     let numStr = num.toString()

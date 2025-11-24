@@ -1,11 +1,14 @@
 <script lang="ts">
-  export let startYear: number | undefined
-  export let endYear: number | undefined
+  let {
+    startYear,
+    endYear: endYearProp
+  }: {
+    startYear: number | undefined
+    endYear: number | undefined
+  } = $props()
 
   // Default to current year if no end year is provided
-  if (!endYear) {
-    endYear = new Date().getFullYear()
-  }
+  let endYear = endYearProp ?? new Date().getFullYear()
 </script>
 
 {#if startYear}
