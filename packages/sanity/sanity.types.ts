@@ -15,23 +15,23 @@
 // Source: schema.json
 export type WorkList = {
   _id: string
-  _type: 'workList'
+  _type: "workList"
   _createdAt: string
   _updatedAt: string
   _rev: string
   title?: string
   works?: Array<{
     _ref: string
-    _type: 'reference'
+    _type: "reference"
     _weak?: boolean
     _key: string
-    [internalGroqTypeReferenceTo]?: 'work'
+    [internalGroqTypeReferenceTo]?: "work"
   }>
 }
 
 export type Documentation = {
   _id: string
-  _type: 'documentation'
+  _type: "documentation"
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -44,23 +44,23 @@ export type Documentation = {
     | {
         asset?: {
           _ref: string
-          _type: 'reference'
+          _type: "reference"
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset"
         }
         media?: unknown
         hotspot?: SanityImageHotspot
         crop?: SanityImageCrop
         year?: number
         caption?: string
-        _type: 'image'
+        _type: "image"
         _key: string
       }
     | {
         url?: string
         year?: number
         caption?: string
-        _type: 'video'
+        _type: "video"
         _key: string
       }
   >
@@ -68,13 +68,13 @@ export type Documentation = {
 }
 
 export type Slug = {
-  _type: 'slug'
+  _type: "slug"
   current?: string
   source?: string
 }
 
 export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
+  _type: "sanity.imageCrop"
   top?: number
   bottom?: number
   left?: number
@@ -82,7 +82,7 @@ export type SanityImageCrop = {
 }
 
 export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
+  _type: "sanity.imageHotspot"
   x?: number
   y?: number
   height?: number
@@ -90,37 +90,37 @@ export type SanityImageHotspot = {
 }
 
 export type ContentEditor = {
-  _type: 'contentEditor'
+  _type: "contentEditor"
   content?: Array<
     | {
         children?: Array<{
           marks?: Array<string>
           text?: string
-          _type: 'span'
+          _type: "span"
           _key: string
         }>
-        style?: 'normal' | 'textSizeSmall' | 'textSizeMedium' | 'textSizeLarge'
+        style?: "normal" | "textSizeSmall" | "textSizeMedium" | "textSizeLarge"
         listItem?: never
         markDefs?: Array<{
           href?: string
-          _type: 'link'
+          _type: "link"
           _key: string
         }>
         level?: number
-        _type: 'block'
+        _type: "block"
         _key: string
       }
     | {
         asset?: {
           _ref: string
-          _type: 'reference'
+          _type: "reference"
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset"
         }
         media?: unknown
         hotspot?: SanityImageHotspot
         crop?: SanityImageCrop
-        _type: 'image'
+        _type: "image"
         _key: string
       }
   >
@@ -128,7 +128,7 @@ export type ContentEditor = {
 
 export type Work = {
   _id: string
-  _type: 'work'
+  _type: "work"
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -139,31 +139,31 @@ export type Work = {
   content?: ContentEditor
   documentation?: Array<{
     _ref: string
-    _type: 'reference'
+    _type: "reference"
     _weak?: boolean
     _key: string
-    [internalGroqTypeReferenceTo]?: 'documentation'
+    [internalGroqTypeReferenceTo]?: "documentation"
   }>
   slug?: Slug
 }
 
 export type MainPageTop = {
   _id: string
-  _type: 'mainPageTop'
+  _type: "mainPageTop"
   _createdAt: string
   _updatedAt: string
   _rev: string
   featuredImage?: {
     asset?: {
       _ref: string
-      _type: 'reference'
+      _type: "reference"
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset"
     }
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    _type: 'image'
+    _type: "image"
   }
   startYear?: number
   endYear?: number
@@ -171,7 +171,7 @@ export type MainPageTop = {
 
 export type ContributionsToResearch = {
   _id: string
-  _type: 'contributionsToResearch'
+  _type: "contributionsToResearch"
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -180,14 +180,14 @@ export type ContributionsToResearch = {
     year?: number
     content?: ContentEditor
     externalLink?: string
-    _type: 'field'
+    _type: "field"
     _key: string
   }>
 }
 
 export type TextAndArchive = {
   _id: string
-  _type: 'textAndArchive'
+  _type: "textAndArchive"
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -196,14 +196,14 @@ export type TextAndArchive = {
     year?: number
     content?: ContentEditor
     externalLink?: string
-    _type: 'field'
+    _type: "field"
     _key: string
   }>
 }
 
 export type CvAndContact = {
   _id: string
-  _type: 'cvAndContact'
+  _type: "cvAndContact"
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -211,50 +211,50 @@ export type CvAndContact = {
   portraitPhoto?: {
     asset?: {
       _ref: string
-      _type: 'reference'
+      _type: "reference"
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset"
     }
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    _type: 'image'
+    _type: "image"
   }
   cv?: Array<{
     title?: string
     content?: ContentEditor
-    _type: 'field'
+    _type: "field"
     _key: string
   }>
   fullCV?: {
     asset?: {
       _ref: string
-      _type: 'reference'
+      _type: "reference"
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset"
     }
     media?: unknown
-    _type: 'file'
+    _type: "file"
   }
 }
 
 export type About = {
   _id: string
-  _type: 'about'
+  _type: "about"
   _createdAt: string
   _updatedAt: string
   _rev: string
   featuredImage?: {
     asset?: {
       _ref: string
-      _type: 'reference'
+      _type: "reference"
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset"
     }
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    _type: 'image'
+    _type: "image"
   }
   startYear?: number
   endYear?: number
@@ -263,7 +263,7 @@ export type About = {
 
 export type MediaTag = {
   _id: string
-  _type: 'media.tag'
+  _type: "media.tag"
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -271,7 +271,7 @@ export type MediaTag = {
 }
 
 export type SanityImagePaletteSwatch = {
-  _type: 'sanity.imagePaletteSwatch'
+  _type: "sanity.imagePaletteSwatch"
   background?: string
   foreground?: string
   population?: number
@@ -279,7 +279,7 @@ export type SanityImagePaletteSwatch = {
 }
 
 export type SanityImagePalette = {
-  _type: 'sanity.imagePalette'
+  _type: "sanity.imagePalette"
   darkMuted?: SanityImagePaletteSwatch
   lightVibrant?: SanityImagePaletteSwatch
   darkVibrant?: SanityImagePaletteSwatch
@@ -290,14 +290,14 @@ export type SanityImagePalette = {
 }
 
 export type SanityImageDimensions = {
-  _type: 'sanity.imageDimensions'
+  _type: "sanity.imageDimensions"
   height?: number
   width?: number
   aspectRatio?: number
 }
 
 export type SanityImageMetadata = {
-  _type: 'sanity.imageMetadata'
+  _type: "sanity.imageMetadata"
   location?: Geopoint
   dimensions?: SanityImageDimensions
   palette?: SanityImagePalette
@@ -309,7 +309,7 @@ export type SanityImageMetadata = {
 
 export type SanityFileAsset = {
   _id: string
-  _type: 'sanity.fileAsset'
+  _type: "sanity.fileAsset"
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -330,7 +330,7 @@ export type SanityFileAsset = {
 }
 
 export type SanityAssetSourceData = {
-  _type: 'sanity.assetSourceData'
+  _type: "sanity.assetSourceData"
   name?: string
   id?: string
   url?: string
@@ -338,7 +338,7 @@ export type SanityAssetSourceData = {
 
 export type SanityImageAsset = {
   _id: string
-  _type: 'sanity.imageAsset'
+  _type: "sanity.imageAsset"
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -360,7 +360,7 @@ export type SanityImageAsset = {
 }
 
 export type Geopoint = {
-  _type: 'geopoint'
+  _type: "geopoint"
   lat?: number
   lng?: number
   alt?: number
