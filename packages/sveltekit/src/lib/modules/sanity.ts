@@ -7,7 +7,7 @@
 
 import { createClient } from "@sanity/client"
 import { toHTML } from "@portabletext/to-html"
-import imageUrlBuilder from "@sanity/image-url"
+import { createImageUrlBuilder } from "@sanity/image-url"
 import type { PortableTextBlock } from "@portabletext/types"
 
 const SANITY_ID = "5pk6dy85"
@@ -95,6 +95,6 @@ export const loadData = async (query: string, params: any) => {
   }
 }
 
-const builder = imageUrlBuilder(client)
+const builder = createImageUrlBuilder(client)
 
 export const urlFor = (source: any) => builder.image(source)

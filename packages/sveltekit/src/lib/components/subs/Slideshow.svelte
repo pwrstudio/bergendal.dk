@@ -39,12 +39,12 @@
     const slides = slideshowTrack.querySelectorAll(".slide")
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         // Find the slide with the highest intersection ratio
         let maxRatio = 0
         let mostVisibleIndex = 0
 
-        entries.forEach((entry) => {
+        entries.forEach(entry => {
           if (entry.intersectionRatio > maxRatio) {
             maxRatio = entry.intersectionRatio
             const index = Array.from(slides).indexOf(entry.target)
@@ -64,7 +64,7 @@
       }
     )
 
-    slides.forEach((slide) => observer.observe(slide))
+    slides.forEach(slide => observer.observe(slide))
 
     return () => {
       observer.disconnect()
