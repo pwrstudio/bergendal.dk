@@ -82,16 +82,24 @@
     </div>
 
     <!-- Navigation Arrows -->
-    {#if currentSlide > 0}
-      <button class="arrow arrow-left" onclick={prevSlide} aria-label="Previous slide">
-        <ArrowLeft />
-      </button>
-    {/if}
-    {#if currentSlide < numberOfSlides - 1}
-      <button class="arrow arrow-right" onclick={nextSlide} aria-label="Next slide">
-        <ArrowRight />
-      </button>
-    {/if}
+    <button
+      class="arrow arrow-left"
+      class:hidden={currentSlide === 0}
+      onclick={prevSlide}
+      aria-label="Previous slide"
+      disabled={currentSlide === 0}
+    >
+      <ArrowLeft />
+    </button>
+    <button
+      class="arrow arrow-right"
+      class:hidden={currentSlide >= numberOfSlides - 1}
+      onclick={nextSlide}
+      aria-label="Next slide"
+      disabled={currentSlide >= numberOfSlides - 1}
+    >
+      <ArrowRight />
+    </button>
 
     <!-- TIMELINE -->
     {#if showTimeline}
@@ -191,12 +199,18 @@
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.9);
-    border: none;
+    border: 1px solid rgba(0,0,0,0.5);
     cursor: pointer;
     color: var(--green);
     padding: 5px;
     z-index: 10;
-    transition: color 0.2s;
+    transition: color 0.2s, opacity 0.2s ease;
+    opacity: 1;
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
 
     &:hover {
       color: var(--foreground);
